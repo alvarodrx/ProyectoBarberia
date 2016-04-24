@@ -168,6 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHorarioActionPerformed
         // TODO add your handling code here:
+        new VentanaHorario(this,true).setVisible(true);
     }//GEN-LAST:event_BotonHorarioActionPerformed
 
     private void BotonListaEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonListaEsperaActionPerformed
