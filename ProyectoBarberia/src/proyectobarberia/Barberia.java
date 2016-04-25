@@ -1,5 +1,6 @@
 
 package proyectobarberia;
+import Forms.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ public class Barberia {
             listaEspera = new ArrayList();
             servicios = new ArrayList();
             citas = new ArrayList();
+            
             
 	}
 	
@@ -87,6 +89,11 @@ public class Barberia {
 	public void borrarServicio(Servicio servicio) {
             servicios.remove(servicio);
 	}
+        
+        public ArrayList<Servicio> obtenerServicios(){
+            return servicios;
+        }
+        
 	
 	public void agregarClienteListaEspera(Cliente cliente) {
             listaEspera.add(cliente);
@@ -123,6 +130,7 @@ public class Barberia {
             return null; 
         } 
 
+
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
@@ -140,4 +148,14 @@ public class Barberia {
     }
         
        
+
+        
+        public Map getHorario(){
+            return horario;
+        }
+        
+        public void setHorario(Map horario){
+            this.horario = horario;
+        }
+
 }

@@ -1,4 +1,9 @@
 /build/
 /dist/
 /ProyectoBarberia/nbproject/private/
+<<<<<<< HEAD
 /ProyectoBarberia/build/
+=======
+/ProyectoBarberia/build/
+/ProyectoBarberia/dist/
+>>>>>>> origin/master

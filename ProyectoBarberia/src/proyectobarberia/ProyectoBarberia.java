@@ -18,10 +18,15 @@ public class ProyectoBarberia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         Barberia b = Barberia.getInstance();
         b.crearCliente("Ana", "Ana.98", "correo7890098765");
         new VentanaPrincipal().setVisible(true);
        
+
+       
+        
+
         
     }
     
