@@ -174,6 +174,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonListaEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonListaEsperaActionPerformed
         // TODO add your handling code here:
+        new VentanaListaEspera(this, true).setVisible(true);
     }//GEN-LAST:event_BotonListaEsperaActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
