@@ -5,11 +5,15 @@
  */
 package Forms;
 
+import javax.swing.JOptionPane;
+import proyectobarberia.Barberia;
+
 /**
  *
  * @author alvar_000
  */
 public class VentanaHorario extends javax.swing.JDialog {
+    private Barberia b = Barberia.getInstance();
 
     /**
      * Creates new form VentanaHorario
@@ -83,11 +87,20 @@ public class VentanaHorario extends javax.swing.JDialog {
 
     private void BotonVerHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerHorarioActionPerformed
         // TODO add your handling code here:
-        new Horario().setVisible(true);
+        if(b.getHorario() == null){
+            JOptionPane.showMessageDialog(this, "No se ha establecido un horario aún, primero establezca el horario de atención", "No hay horario", 2);
+        }
+        else{
+            Horario h = new Horario(b.getHorario());
+            h.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_BotonVerHorarioActionPerformed
 
     private void BotonVerHorario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerHorario1ActionPerformed
         // TODO add your handling code here:
+        new Horario().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BotonVerHorario1ActionPerformed
 
     /**

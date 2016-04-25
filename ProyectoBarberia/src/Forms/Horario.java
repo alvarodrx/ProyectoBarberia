@@ -8,20 +8,22 @@ package Forms;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import proyectobarberia.Barberia;
 
 /**
  *
  * @author alvar_000
  */
 public class Horario extends javax.swing.JFrame {
-    Map<Integer,Map> horario = new LinkedHashMap<>();
-    Map<Integer,Boolean> domingo = new TreeMap<>();
-    Map<Integer,Boolean> lunes = new TreeMap<>();
-    Map<Integer,Boolean> martes = new TreeMap<>();
-    Map<Integer,Boolean> miercoles = new TreeMap<>();
-    Map<Integer,Boolean> jueves = new TreeMap<>();
-    Map<Integer,Boolean> viernes = new TreeMap<>();
-    Map<Integer,Boolean> Sabado = new TreeMap<>();
+    private Map<Integer,Map> horario = new LinkedHashMap<>();
+    private Map<Integer,Boolean> domingo = new TreeMap<>();
+    private Map<Integer,Boolean> lunes = new TreeMap<>();
+    private Map<Integer,Boolean> martes = new TreeMap<>();
+    private Map<Integer,Boolean> miercoles = new TreeMap<>();
+    private Map<Integer,Boolean> jueves = new TreeMap<>();
+    private Map<Integer,Boolean> viernes = new TreeMap<>();
+    private Map<Integer,Boolean> Sabado = new TreeMap<>();
+    private Barberia b = Barberia.getInstance();
     
     
     
@@ -30,6 +32,7 @@ public class Horario extends javax.swing.JFrame {
      */
     public Horario() {
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jTable2.setEnabled(false);
         
         
@@ -38,10 +41,11 @@ public class Horario extends javax.swing.JFrame {
     public Horario(Map horario){
         this.horario= horario;
         initComponents();
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         cargarHorario();
         jTable1.setEnabled(false);
         jTable2.setEnabled(false);
-        
+        botonAceptar.setVisible(false);
         
     }
     
@@ -92,7 +96,7 @@ public class Horario extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        botonAceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -202,10 +206,10 @@ public class Horario extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
 
@@ -228,7 +232,7 @@ public class Horario extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(botonAceptar)
                 .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
@@ -241,18 +245,20 @@ public class Horario extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(botonAceptar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         horario = guardarHorario();
+        b.setHorario(horario);
         System.out.println(horario);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,7 +297,7 @@ public class Horario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -1,5 +1,6 @@
 
 package proyectobarberia;
+import Forms.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ public class Barberia {
             listaEspera = new ArrayList();
             servicios = new ArrayList();
             citas = new ArrayList();
+            new VentanaPrincipal().setVisible(true);
             
 	}
 	
@@ -122,4 +124,12 @@ public class Barberia {
             }
             return null; 
         } 
+        
+        public Map getHorario(){
+            return horario;
+        }
+        
+        public void setHorario(Map horario){
+            this.horario = horario;
+        }
 }
