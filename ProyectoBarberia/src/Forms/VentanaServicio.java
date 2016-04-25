@@ -5,7 +5,12 @@
  */
 package Forms;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import proyectobarberia.Barberia;
+
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -19,6 +24,8 @@ public class VentanaServicio extends javax.swing.JDialog {
     public VentanaServicio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        refrescarValoresListaServicios();
+        
     }
 
     /**
@@ -60,8 +67,15 @@ public class VentanaServicio extends javax.swing.JDialog {
         });
 
         btnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png"))); // NOI18N
+        btnEditarServicio.setEnabled(false);
+        btnEditarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarServicioActionPerformed(evt);
+            }
+        });
 
         btnEliminarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png"))); // NOI18N
+        btnEliminarServicio.setEnabled(false);
         btnEliminarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarServicioActionPerformed(evt);
@@ -115,6 +129,24 @@ public class VentanaServicio extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean verificarExistenciaDeServicio(String servicio){
+        for(int i = 0; i < Barberia.getInstance().obtenerServicios().size(); i++){
+            if(Barberia.getInstance().obtenerServicios().get(i).getDescripcion().equals(servicio)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void refrescarValoresListaServicios(){
+        DefaultListModel modeloListaServicios = new DefaultListModel();
+        
+        for(int i = 0; i< Barberia.getInstance().obtenerServicios().size(); i++){
+            modeloListaServicios.add(i, Barberia.getInstance().obtenerServicios().get(i).getDescripcion());
+        }       
+        listaServicios.setModel(modeloListaServicios);
+    }
+    
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -123,17 +155,56 @@ public class VentanaServicio extends javax.swing.JDialog {
     private void btnAgregarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioActionPerformed
         // TODO add your handling code here:
         
-        //(new AgregarServicio(this,true)).setVisible(true);
-        //JOptionPane.showInput
-        JOptionPane.showInputDialog(this,"Ingrese un nuevo servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png")),null,null);
+        String servicio = (String) JOptionPane.showInputDialog(this,"Ingrese una descripción del nuevo Servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png")),null,null);
+        
+        if(verificarExistenciaDeServicio(servicio)){        
+            JOptionPane.showMessageDialog(null, "El servicio ya existe","Error al agregar Servicio",0);         
+        }
+        else{
+            if(servicio.equals("")){
+                JOptionPane.showMessageDialog(null, "El Servicio debe contener una descripción","Mensaje vacío",0);
+            }
+            else{
+                //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
+                Barberia.getInstance().crearServicio(servicio);
+                JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente");
+                refrescarValoresListaServicios();
+
+                btnEliminarServicio.setEnabled(true);
+                btnEditarServicio.setEnabled(true);
+            }
+        }
+        
     }//GEN-LAST:event_btnAgregarServicioActionPerformed
 
     private void btnEliminarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarServicioActionPerformed
         // TODO add your handling code here:
         
         //Parent, message, tittle, optiontype, messagetype, icon
-        JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este servicio?", "Eliminar servicio", 0,0);
+        int opcionBorrar = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este servicio?", "Eliminar servicio", 0,0, new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png")));
+        
+        if(opcionBorrar == 0){
+             Barberia.getInstance().borrarServicio(Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()));
+        
+            refrescarValoresListaServicios();
+            
+            if(Barberia.getInstance().obtenerServicios().size() == 0){
+                btnEliminarServicio.setEnabled(false);
+                btnEditarServicio.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_btnEliminarServicioActionPerformed
+
+    private void btnEditarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarServicioActionPerformed
+        // TODO add your handling code here:
+        String edicion = (String) JOptionPane.showInputDialog(this,"Ingrese una nueva descripción del Servicio", "Editar Servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")),null,null);
+        
+        Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()).setDescripcion(edicion);
+        JOptionPane.showMessageDialog(null, "Servicio editado exitosamente");
+        
+        refrescarValoresListaServicios();
+        
+    }//GEN-LAST:event_btnEditarServicioActionPerformed
 
     /**
      * @param args the command line arguments

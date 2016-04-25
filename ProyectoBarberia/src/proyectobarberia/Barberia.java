@@ -89,6 +89,11 @@ public class Barberia {
 	public void borrarServicio(Servicio servicio) {
             servicios.remove(servicio);
 	}
+        
+        public ArrayList<Servicio> obtenerServicios(){
+            return servicios;
+        }
+        
 	
 	public void agregarClienteListaEspera(Cliente cliente) {
             listaEspera.add(cliente);
