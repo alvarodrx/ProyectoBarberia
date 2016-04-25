@@ -6,10 +6,14 @@
 package Forms;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import proyectobarberia.Barberia;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.JTextField;
 
 
 /**
@@ -54,6 +58,14 @@ public class VentanaServicio extends javax.swing.JDialog {
             }
         });
 
+        listaServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaServiciosMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaServiciosMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaServicios);
 
         lblTitulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -154,26 +166,31 @@ public class VentanaServicio extends javax.swing.JDialog {
 
     private void btnAgregarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioActionPerformed
         // TODO add your handling code here:
-        
-        String servicio = (String) JOptionPane.showInputDialog(this,"Ingrese una descripción del nuevo Servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png")),null,null);
-        
-        if(verificarExistenciaDeServicio(servicio)){        
-            JOptionPane.showMessageDialog(null, "El servicio ya existe","Error al agregar Servicio",0);         
-        }
-        else{
-            if(servicio.equals("")){
+   
+        try{
+            String servicio = (String) JOptionPane.showInputDialog(this,"Ingrese una descripción del nuevo Servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png")),null,null);
+
+            if(servicio.equals("")){        
                 JOptionPane.showMessageDialog(null, "El Servicio debe contener una descripción","Mensaje vacío",0);
             }
             else{
-                //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
-                Barberia.getInstance().crearServicio(servicio);
-                JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente");
-                refrescarValoresListaServicios();
-
-                btnEliminarServicio.setEnabled(true);
-                btnEditarServicio.setEnabled(true);
+                if(verificarExistenciaDeServicio(servicio)){
+                    JOptionPane.showMessageDialog(null, "El servicio ya existe","Error al agregar Servicio",0);
+                }
+                else{
+                    //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
+                    Barberia.getInstance().crearServicio(servicio);
+                    JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente");
+                    refrescarValoresListaServicios();
+                    btnEliminarServicio.setEnabled(false);
+                    btnEditarServicio.setEnabled(false);
+                }
             }
         }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar una descripción", "Servicio no agregado",0);
+        }
+            
         
     }//GEN-LAST:event_btnAgregarServicioActionPerformed
 
@@ -197,14 +214,43 @@ public class VentanaServicio extends javax.swing.JDialog {
 
     private void btnEditarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarServicioActionPerformed
         // TODO add your handling code here:
-        String edicion = (String) JOptionPane.showInputDialog(this,"Ingrese una nueva descripción del Servicio", "Editar Servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")),null,null);
         
-        Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()).setDescripcion(edicion);
-        JOptionPane.showMessageDialog(null, "Servicio editado exitosamente");
+        try{
+            String edicion = (String) JOptionPane.showInputDialog(this,"Ingrese una nueva descripción del Servicio", "Editar Servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")),null,null);
+
+            if(edicion.equals("")){
+                JOptionPane.showMessageDialog(null, "La nueva descripción no puede estar vacía","Servicio no modificado",0);
+            }
+            else{
+                Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()).setDescripcion(edicion);
+                
+                JOptionPane.showMessageDialog(null, "La nueva descripción del servicio es: " + edicion,"Servicio editado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")));
+                
+                refrescarValoresListaServicios();
+                btnEditarServicio.setEnabled(false);
+                btnEliminarServicio.setEnabled(false);
+                
+            }
+            
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar una nueva descripción", "Servicio no modificado",0);
+        }
         
-        refrescarValoresListaServicios();
         
     }//GEN-LAST:event_btnEditarServicioActionPerformed
+
+    private void listaServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaServiciosMouseClicked
+        // TODO add your handling code here:
+        btnEditarServicio.setEnabled(true);
+        btnEliminarServicio.setEnabled(true);
+    }//GEN-LAST:event_listaServiciosMouseClicked
+
+    private void listaServiciosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaServiciosMousePressed
+        // TODO add your handling code here:
+        btnEditarServicio.setEnabled(true);
+        btnEliminarServicio.setEnabled(true);
+    }//GEN-LAST:event_listaServiciosMousePressed
 
     /**
      * @param args the command line arguments

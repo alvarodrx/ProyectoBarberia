@@ -164,6 +164,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonServiciosActionPerformed
         // TODO add your handling code here:
+        new VentanaServicio(this,true).setVisible(true);
     }//GEN-LAST:event_BotonServiciosActionPerformed
 
     private void BotonHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHorarioActionPerformed
