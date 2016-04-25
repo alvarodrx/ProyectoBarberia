@@ -32,7 +32,7 @@ public class Barberia {
             listaEspera = new ArrayList();
             servicios = new ArrayList();
             citas = new ArrayList();
-            new VentanaPrincipal().setVisible(true);
+            
             
 	}
 	

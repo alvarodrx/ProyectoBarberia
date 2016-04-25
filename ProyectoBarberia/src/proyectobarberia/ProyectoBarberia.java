@@ -18,7 +18,8 @@ public class ProyectoBarberia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Barberia b = Barberia.getInstance();
+        //Barberia b = Barberia.getInstance();
+        new VentanaPrincipal().setVisible(true);
         
         
     }
