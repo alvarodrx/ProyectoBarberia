@@ -122,4 +122,22 @@ public class Barberia {
             }
             return null; 
         } 
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public ArrayList<Cliente> getListaEspera() {
+        return listaEspera;
+    }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public void setListaEspera(ArrayList<Cliente> listaEspera) {
+        this.listaEspera = listaEspera;
+    }
+        
+       
 }
