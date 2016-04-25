@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 
-
+//Este es un comentario
 /**
  *
  * @author AS
@@ -180,7 +180,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                 else{
                     //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
                     Barberia.getInstance().crearServicio(servicio);
-                    JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente");
+                    JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente", "Servicio agregado exitosamente",1);
                     refrescarValoresListaServicios();
                     btnEliminarServicio.setEnabled(false);
                     btnEditarServicio.setEnabled(false);
