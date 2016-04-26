@@ -11,46 +11,58 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import proyectobarberia.*;
 
-
 /**
  *
  * @author CAMILA
  */
 public class VentanaListaEspera extends javax.swing.JDialog {
+
     DefaultListModel VentanaListaEspera = new DefaultListModel();
     private Barberia barberia = Barberia.getInstance();
     private ArrayList<String> listaClientes;
- 
+    private ArrayList<String> listaCorreos;
+
     //constructor de ventana lista espera
-    private VentanaListaEspera (){
-       
+    private VentanaListaEspera() {
+
     }
 
     /**
      * Creates new form NewJDialog
      */
-
     public VentanaListaEspera(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-         listaClientes = new ArrayList();
-         Iterator <Cliente> almacenar = barberia.getClientes().iterator();
-         while( almacenar.hasNext()){
-             Cliente cliente = almacenar.next();
-             listaClientes.add(cliente.getCorreo());
-         }
-         
+        listaClientes = new ArrayList();
+        Iterator<Cliente> almacenar = barberia.getClientes().iterator();
+        while (almacenar.hasNext()) {
+            Cliente cliente = almacenar.next();
+            listaClientes.add(cliente.getCorreo());
+        }
+
         DefaultComboBoxModel boxCliente = new DefaultComboBoxModel();
         ComboBoxListaClientes.setModel(boxCliente);
-        for(int i=0; i<listaClientes.size(); i++){
+        for (int i = 0; i < listaClientes.size(); i++) {
             String clienteC = listaClientes.get(i);
             boxCliente.addElement(clienteC);
         }
-        
+        refrescarListaEspera();
+
     }
-    
-    
+
+    private void refrescarListaEspera() {
+        DefaultListModel modeloListaCliEspera = new DefaultListModel();
+        int contador = 0;
+        for (Cliente cliente : barberia.getListaEspera()) {
+            modeloListaCliEspera.add(contador, cliente.getCorreo());
+            contador++;
+
+        }
+        TextListaClienteEspera.setModel(modeloListaCliEspera);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,6 +97,11 @@ public class VentanaListaEspera extends javax.swing.JDialog {
         });
 
         BotonEliminarCliente.setText("-");
+        BotonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarClienteActionPerformed(evt);
+            }
+        });
 
         BotonVerCliente.setText("verCliente");
 
@@ -143,15 +160,25 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarClienteActionPerformed
-        
+        String clienteEspera = (String) ComboBoxListaClientes.getSelectedItem();
+        barberia.agregarClienteListaEspera(barberia.buscarCliente(clienteEspera));
+        refrescarListaEspera();
+
 // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BotonAgregarClienteActionPerformed
 
     private void ComboBoxListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxListaClientesActionPerformed
-         
+
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxListaClientesActionPerformed
+
+    private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
+    barberia.borrarClienteListaEspera(TextListaClienteEspera.getSelectedIndex());
+    refrescarListaEspera();
+    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonEliminarClienteActionPerformed
 
     /**
      * @param args the command line arguments
