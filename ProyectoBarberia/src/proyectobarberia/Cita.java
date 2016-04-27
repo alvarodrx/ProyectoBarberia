@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author CAMILA
  */
-public class Cita {
+public class Cita implements java.io.Serializable{
     private LocalDate fecha;
     private int hora;
     private boolean confirmado = false;

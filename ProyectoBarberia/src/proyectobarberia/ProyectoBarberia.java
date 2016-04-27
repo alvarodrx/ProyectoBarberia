@@ -6,6 +6,8 @@
 package proyectobarberia;
 
 import Forms.VentanaPrincipal;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -16,19 +18,21 @@ public class ProyectoBarberia {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args){
         // TODO code application logic here
+        Configuracion c = new Configuracion();
+        Barberia barberia;
+        barberia = c.cargarDatos();
+        if(barberia == null){
+            barberia = Barberia.getInstance();
+            System.out.println("No hay archivo");
+            barberia.crearCliente("Ana", "Ana.98", "correo7890098765");
+        }else{
+            System.out.println("Se cargó el archivo");
 
-
-        Barberia b = Barberia.getInstance();
-        b.crearCliente("Ana", "Ana.98", "correo7890098765");
+        }
         new VentanaPrincipal().setVisible(true);
        
-
-       
-
-        
-
         
     }
     

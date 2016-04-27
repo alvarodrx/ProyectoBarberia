@@ -2,7 +2,7 @@ package proyectobarberia;
 import java.util.ArrayList;
 
 
-public class Cliente {
+public class Cliente implements java.io.Serializable{
 	private String nombre;
 	private String correo;
 	private String telefono;

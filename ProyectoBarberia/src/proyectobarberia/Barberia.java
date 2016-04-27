@@ -1,6 +1,5 @@
 package proyectobarberia;
 
-import Forms.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
 
-public class Barberia {
+public class Barberia implements java.io.Serializable {
 
     private String nombre;
     private String telefono;
@@ -19,7 +18,7 @@ public class Barberia {
     private ArrayList<Cita> citas;
     private ArrayList<Servicio> servicios;
     public Configuracion configuracion;
-    private static Barberia instance = new Barberia();
+    private static Barberia instance;
     private String correoBarberia;
     private String passCorreo;
 
@@ -28,11 +27,15 @@ public class Barberia {
         listaEspera = new ArrayList();
         servicios = new ArrayList();
         citas = new ArrayList();
+        configuracion = new Configuracion();
             //new VentanaPrincipal().setVisible(true);
 
     }
 
     public static Barberia getInstance() {
+        if(instance == null){
+            instance = new Barberia();
+        }
         return instance;
     }
 

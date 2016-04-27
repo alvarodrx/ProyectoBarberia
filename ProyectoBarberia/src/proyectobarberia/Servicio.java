@@ -2,7 +2,7 @@ package proyectobarberia;
 
 
 
-public class Servicio {
+public class Servicio implements java.io.Serializable{
 	private String descripcion;
         
 	public Servicio(String descripcion) {
