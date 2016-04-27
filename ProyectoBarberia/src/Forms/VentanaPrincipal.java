@@ -198,13 +198,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEditarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        try {
-            // TODO add your handling code here:
-            barberia.configuracion.guardarDatos();
-        } catch (IOException ex) {
-            System.out.println("Algo paso");
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        barberia.configuracion.guardarDatos();
     }//GEN-LAST:event_formWindowClosing
 
     /**

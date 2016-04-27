@@ -31,10 +31,14 @@ public class Barberia implements java.io.Serializable {
             //new VentanaPrincipal().setVisible(true);
 
     }
+    public void setInstance(Barberia inst){
+        instance = inst;
+    }
 
     public static Barberia getInstance() {
         if(instance == null){
             instance = new Barberia();
+            System.out.println("se crea la barberia");
         }
         return instance;
     }

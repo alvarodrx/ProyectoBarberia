@@ -28,6 +28,7 @@ public class ProyectoBarberia {
             System.out.println("No hay archivo");
             barberia.crearCliente("Ana", "Ana.98", "correo7890098765");
         }else{
+            barberia.setInstance(barberia);
             System.out.println("Se cargó el archivo");
 
         }
