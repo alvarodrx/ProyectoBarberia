@@ -6,14 +6,10 @@
 package Forms;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import proyectobarberia.Barberia;
-
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.JTextField;
+
+
 
 //Este es un comentario
 /**
@@ -24,11 +20,20 @@ public class VentanaServicio extends javax.swing.JDialog {
 
     /**
      * Creates new form VentanaServicio
+     * @param parent
+     * @param modal
      */
     public VentanaServicio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         refrescarValoresListaServicios();
+        
+        
+        java.awt.Dimension dimensionListaServicios = listaServicios.getPreferredSize(); //-------
+        dimensionListaServicios.width = 265;                                            //-------
+        jscrPanel.setPreferredSize(dimensionListaServicios);                            //-------
+        refrescarValoresListaServicios();                                               //-------
+        
         
     }
 
@@ -42,7 +47,7 @@ public class VentanaServicio extends javax.swing.JDialog {
     private void initComponents() {
 
         btnCerrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jscrPanel = new javax.swing.JScrollPane();
         listaServicios = new javax.swing.JList();
         lblTitulo = new javax.swing.JLabel();
         btnAgregarServicio = new javax.swing.JButton();
@@ -66,7 +71,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                 listaServiciosMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(listaServicios);
+        jscrPanel.setViewportView(listaServicios);
 
         lblTitulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblTitulo.setText("Lista de Servicios Disponibles");
@@ -108,7 +113,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jscrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,7 +130,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jscrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(btnAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +185,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                 else{
                     //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
                     Barberia.getInstance().crearServicio(servicio);
-                    JOptionPane.showMessageDialog(null, "Servicio agregado exitosamente", "Servicio agregado exitosamente",1);
+                    JOptionPane.showMessageDialog(null, "Nuevo servicio creado: " + servicio,"Servicio creado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png"))); //-------
                     refrescarValoresListaServicios();
                     btnEliminarServicio.setEnabled(false);
                     btnEditarServicio.setEnabled(false);
@@ -205,7 +210,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         
             refrescarValoresListaServicios();
             
-            if(Barberia.getInstance().obtenerServicios().size() == 0){
+            if(Barberia.getInstance().obtenerServicios().isEmpty()){
                 btnEliminarServicio.setEnabled(false);
                 btnEditarServicio.setEnabled(false);
             }
@@ -228,10 +233,8 @@ public class VentanaServicio extends javax.swing.JDialog {
                 
                 refrescarValoresListaServicios();
                 btnEditarServicio.setEnabled(false);
-                btnEliminarServicio.setEnabled(false);
-                
+                btnEliminarServicio.setEnabled(false);   
             }
-            
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Debe ingresar una nueva descripción", "Servicio no modificado",0);
@@ -299,7 +302,7 @@ public class VentanaServicio extends javax.swing.JDialog {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditarServicio;
     private javax.swing.JButton btnEliminarServicio;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jscrPanel;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JList listaServicios;
     // End of variables declaration//GEN-END:variables
