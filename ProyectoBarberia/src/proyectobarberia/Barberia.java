@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
 
+import java.util.regex.*;
+
 public class Barberia {
 
     private String nombre;
@@ -23,6 +25,7 @@ public class Barberia {
     private String correoBarberia;
     private String passCorreo;
 
+
     private Barberia() {
         clientes = new ArrayList();
         listaEspera = new ArrayList();
@@ -31,6 +34,8 @@ public class Barberia {
             //new VentanaPrincipal().setVisible(true);
 
     }
+    
+    
 
     public static Barberia getInstance() {
         return instance;
@@ -106,12 +111,20 @@ public class Barberia {
 
     }
 
-    public boolean comprobarCorreo(String correo) {
-        return true;
+    
+    //Valida el ingreso de datos 
+    private boolean validar(String expReg, String valor){
+       Pattern patron = Pattern.compile(expReg);
+       Matcher encontrada = patron.matcher(valor);
+       return encontrada.matches();
     }
-
+    public boolean comprobarCorreo(String correo) {
+        return validar("^[\\w-\\.]+\\@[\\w\\.-]+\\.[a-z]{2,4}$",correo);
+       
+    }
+    
     public boolean comprobarTelefono(String telefono) {
-        return true;
+        return validar("[\\d{0,9}[- ]*]*\\d{0,9}", telefono)|| validar("[\\w(]+[\\d{0,9}][\\w)]+[\\d{0,9}[- ]*]*\\d{0,9}", telefono);
     }
 
     private static Cita buscarCita(Cita cita, ArrayList citas) {
@@ -162,5 +175,6 @@ public class Barberia {
         return null;
     }
 
+  
 }
 

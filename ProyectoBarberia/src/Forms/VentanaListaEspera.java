@@ -104,6 +104,11 @@ public class VentanaListaEspera extends javax.swing.JDialog {
         });
 
         BotonVerCliente.setText("verCliente");
+        BotonVerCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVerClienteActionPerformed(evt);
+            }
+        });
 
         ComboBoxListaClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +184,10 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed
+
+    private void BotonVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonVerClienteActionPerformed
 
     /**
      * @param args the command line arguments

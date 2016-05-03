@@ -21,8 +21,11 @@ public class ProyectoBarberia {
 
 
         Barberia b = Barberia.getInstance();
-        b.crearCliente("Ana", "Ana.98", "correo7890098765");
-        new VentanaPrincipal().setVisible(true);
+        System.out.println(b.comprobarTelefono("(506)8753-7822"));
+        
+        //b.crearCliente("Ana", "Ana.98", "correo7890098765");
+        //new VentanaPrincipal().setVisible(true);
+       
        
 
        
