@@ -172,6 +172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCitasActionPerformed
         // TODO add your handling code here:
+        new VentanaCitas(this, true).setVisible(true);
     }//GEN-LAST:event_BotonCitasActionPerformed
 
     private void BotonServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonServiciosActionPerformed
