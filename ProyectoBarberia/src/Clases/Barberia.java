@@ -1,4 +1,4 @@
-package proyectobarberia;
+package Clases;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -107,10 +107,6 @@ public class Barberia implements java.io.Serializable {
     public ArrayList<Servicio> obtenerServicios() {
         return servicios;
     }
-    
-    public ArrayList<Cliente> obtenerClientes(){
-        return clientes;
-    }
 
     public void agregarClienteListaEspera(Cliente cliente) {
         listaEspera.add(cliente);
@@ -141,7 +137,7 @@ public class Barberia implements java.io.Serializable {
     }
     
     public boolean comprobarTelefono(String telefono) {
-        return validar("[\\d{0,9}[- ]*]*\\d{0,9}", telefono)|| validar("[\\w(]+[\\d{0,9}][\\w)]+[\\d{0,9}[- ]*]*\\d{0,9}", telefono);
+        return validar("[\\d{0,9}[- ]*]*\\d{0,9}", telefono) || validar("[\\w(]+[\\d{0,9}][\\w)]+[\\d{0,9}[- ]*]*\\d{0,9}", telefono);
     }
 
     private static Cita buscarCita(Cita cita, ArrayList citas) {

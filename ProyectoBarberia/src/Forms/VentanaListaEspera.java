@@ -5,11 +5,12 @@
  */
 package Forms;
 
+import Clases.Cliente;
+import Clases.Barberia;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import proyectobarberia.*;
 
 /**
  *

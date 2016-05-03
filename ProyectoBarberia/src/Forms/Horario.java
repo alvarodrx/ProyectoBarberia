@@ -8,7 +8,7 @@ package Forms;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import proyectobarberia.Barberia;
+import Clases.Barberia;
 
 /**
  *
