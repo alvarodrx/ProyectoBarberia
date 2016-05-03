@@ -107,6 +107,10 @@ public class Barberia implements java.io.Serializable {
     public ArrayList<Servicio> obtenerServicios() {
         return servicios;
     }
+    
+    public ArrayList<Cliente> obtenerClientes(){
+        return clientes;
+    }
 
     public void agregarClienteListaEspera(Cliente cliente) {
         listaEspera.add(cliente);
