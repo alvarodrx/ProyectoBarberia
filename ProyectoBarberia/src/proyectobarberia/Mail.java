@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
  *
  * @author alvar_000
  */
-public class Mail {
+public class Mail implements java.io.Serializable{
     
     private Properties props = new Properties();
     Session session;    

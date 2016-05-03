@@ -16,14 +16,7 @@ import proyectobarberia.Barberia;
  */
 public class Horario extends javax.swing.JFrame {
     private Map<Integer,Map> horario = new LinkedHashMap<>();
-    private Map<Integer,Boolean> domingo = new TreeMap<>();
-    private Map<Integer,Boolean> lunes = new TreeMap<>();
-    private Map<Integer,Boolean> martes = new TreeMap<>();
-    private Map<Integer,Boolean> miercoles = new TreeMap<>();
-    private Map<Integer,Boolean> jueves = new TreeMap<>();
-    private Map<Integer,Boolean> viernes = new TreeMap<>();
-    private Map<Integer,Boolean> Sabado = new TreeMap<>();
-    private Barberia b = Barberia.getInstance();
+    private Barberia barberia = Barberia.getInstance();
     
     
     
@@ -46,6 +39,7 @@ public class Horario extends javax.swing.JFrame {
         jTable1.setEnabled(false);
         jTable2.setEnabled(false);
         botonAceptar.setVisible(false);
+        
         
     }
     
@@ -255,7 +249,7 @@ public class Horario extends javax.swing.JFrame {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         horario = guardarHorario();
-        b.setHorario(horario);
+        barberia.setHorario(horario);
         System.out.println(horario);
         this.dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed

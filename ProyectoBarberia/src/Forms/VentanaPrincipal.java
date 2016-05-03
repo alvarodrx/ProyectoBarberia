@@ -5,17 +5,24 @@
  */
 package Forms;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectobarberia.Barberia;
+
 /**
  *
  * @author CAMILA
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    Barberia barberia;
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        barberia = Barberia.getInstance();
     }
 
     /**
@@ -38,6 +45,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BotonEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         Lbarberia.setText("Barberia");
 
@@ -160,6 +172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void BotonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCitasActionPerformed
         // TODO add your handling code here:
+        new VentanaCitas(this, true).setVisible(true);
     }//GEN-LAST:event_BotonCitasActionPerformed
 
     private void BotonServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonServiciosActionPerformed
@@ -184,6 +197,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void BotonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonEditarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        barberia.configuracion.guardarDatos();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
