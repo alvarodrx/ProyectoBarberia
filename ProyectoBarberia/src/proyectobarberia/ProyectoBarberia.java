@@ -47,7 +47,7 @@ public class ProyectoBarberia {
 
         }
         new VentanaPrincipal().setVisible(true);
-        System.out.println(barberia.comprobarTelefono("(506)8753-7822"));
+        System.out.println(barberia.comprobarTelefono("camila"));
 
 
         

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import proyectobarberia.*;
 
 /**
@@ -83,11 +84,11 @@ public class VentanaListaEspera extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        LabelListaEspera.setText("Lista Espera");
+        LabelListaEspera.setText("Clientes");
 
         jScrollPane1.setViewportView(TextListaClienteEspera);
 
-        LabelNombreCliente.setText("Nombre del Cliente ");
+        LabelNombreCliente.setText("Lista de espera");
 
         BotonAgregarCliente.setText("+");
         BotonAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -165,10 +166,11 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarClienteActionPerformed
+
         String clienteEspera = (String) ComboBoxListaClientes.getSelectedItem();
         barberia.agregarClienteListaEspera(barberia.buscarCliente(clienteEspera));
         refrescarListaEspera();
-
+        
 // TODO add your handling code here:
 
     }//GEN-LAST:event_BotonAgregarClienteActionPerformed
@@ -179,10 +181,16 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     }//GEN-LAST:event_ComboBoxListaClientesActionPerformed
 
     private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
-    barberia.borrarClienteListaEspera(TextListaClienteEspera.getSelectedIndex());
-    refrescarListaEspera();
-    
-        // TODO add your handling code here:
+     // TODO add your handling code here:
+        try{
+            barberia.borrarClienteListaEspera(TextListaClienteEspera.getSelectedIndex());
+        refrescarListaEspera();
+          
+     } 
+        catch (Exception ex){
+                 JOptionPane.showMessageDialog(null, "No hay cliente en lista de espera");
+
+                }
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed
 
     private void BotonVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerClienteActionPerformed

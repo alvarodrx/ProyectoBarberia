@@ -10,6 +10,7 @@ import javax.mail.MessagingException;
 
 
 import java.util.regex.*;
+import javax.swing.JOptionPane;
 
 
 
@@ -136,9 +137,18 @@ public class Barberia implements java.io.Serializable {
        
     }
     
-    public boolean comprobarTelefono(String telefono) {
+  public boolean comprobarTelefono(String telefono) {
+       int cantNumTelefono;
+        cantNumTelefono = telefono.length();
+        if(telefono.equals("")|| cantNumTelefono < 10){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero de telefono valido");
+        }else{
         return validar("[\\d{0,9}[- ]*]*\\d{0,9}", telefono)|| validar("[\\w(]+[\\d{0,9}][\\w)]+[\\d{0,9}[- ]*]*\\d{0,9}", telefono);
-    }
+    
+   }
+        return true;
+  }
+   
 
     private static Cita buscarCita(Cita cita, ArrayList citas) {
         Iterator<Cita> iter = citas.iterator();
