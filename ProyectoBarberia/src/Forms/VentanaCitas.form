@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -23,21 +23,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnCrearCita" min="-2" pref="95" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCrearCita1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCrearCita2" min="-2" pref="95" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCrearCita3" min="-2" pref="95" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,14 +40,9 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCrearCita1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCrearCita" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCrearCita2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCrearCita3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,28 +56,37 @@
         <Property name="text" type="java.lang.String" value="Citas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCrearCita">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Crear cita"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearCitaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCrearCita1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Modificar cita"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCrearCita2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Eliminar cita"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCrearCita3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ver citas"/>
-      </Properties>
-    </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+        <Property name="columns" type="int" value="0"/>
+        <Property name="rows" type="int" value="1"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnCrearCita">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Crear cita"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearCitaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCrearCita3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver citas"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCrearCita1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar cita"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCrearCita2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar cita"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -21,19 +21,6 @@ public class ProyectoBarberia {
     public static void main(String[] args){
         // TODO code application logic here
 
-
-
-       
-        
-    
-       
-       
-
-       
-
-        
-
-
         Configuracion c = new Configuracion();
         Barberia barberia;
         barberia = c.cargarDatos();
