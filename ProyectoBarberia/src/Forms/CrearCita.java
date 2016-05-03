@@ -10,6 +10,7 @@ package Forms;
  * @author alvar_000
  */
 public class CrearCita extends javax.swing.JDialog {
+    private int tabActual = 0;
 
     /**
      * Creates new form CrearCita
@@ -201,7 +202,13 @@ public class CrearCita extends javax.swing.JDialog {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedComponent(jPanel2);
+        switch (tabActual){
+            case 1:
+                jTabbedPane1.setSelectedIndex(1);
+                tabActual = 2;
+                break;
+        }
+        
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     /**
