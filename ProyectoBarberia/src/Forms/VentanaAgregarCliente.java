@@ -226,12 +226,21 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         }
         
         else{
-            
-            cliente.setNombre(txfNombre.getText());
-            cliente.setTelefono(txfTelefono.getText());
-            cliente.setCorreo(txfCorreo.getText());
-            dispose();
-            
+            if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
+                if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
+                    cliente.setNombre(txfNombre.getText());
+                    cliente.setTelefono(txfTelefono.getText());
+                    cliente.setCorreo(txfCorreo.getText());
+                    dispose();
+                 
+                }else{
+                    JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                }
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+            }
+           
         }
     }//GEN-LAST:event_btnAccionActionPerformed
 
