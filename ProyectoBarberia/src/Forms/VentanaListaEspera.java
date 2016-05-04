@@ -250,6 +250,8 @@ public class VentanaListaEspera extends javax.swing.JDialog {
         String clienteEspera = (String) ComboBoxListaClientes.getSelectedItem();
         barberia.agregarClienteListaEspera(barberia.buscarCliente(clienteEspera));
         refrescarListaEspera();
+        BotonEliminarCliente.setEnabled(false);
+        BotonVerCliente.setEnabled(false);
     
 
         
@@ -339,8 +341,19 @@ public class VentanaListaEspera extends javax.swing.JDialog {
         LabelCliente.setEnabled(true);
         ComboBoxListaClientes.setEnabled(true);
         BotonAgregarCliente.setEnabled(true);
-        BotonEliminarCliente.setEnabled(true);
-        BotonVerCliente.setEnabled(true);
+        
+        
+        if(TextListaClienteEspera.getSelectedIndex() == -1){
+            BotonEliminarCliente.setEnabled(false);
+            BotonVerCliente.setEnabled(false);
+        }
+        else{
+            BotonEliminarCliente.setEnabled(true);
+            BotonVerCliente.setEnabled(true);
+        }
+        
+        
+        
     }//GEN-LAST:event_rdbEditarListaActionPerformed
 
     /**
