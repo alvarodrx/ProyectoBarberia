@@ -38,6 +38,7 @@
                           <Component id="btnEditarCita" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnEliminarCita" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnEnviarNotificacion" alignment="0" pref="130" max="32767" attributes="0"/>
+                          <Component id="btnCambiarEstadoCita" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -64,6 +65,8 @@
                       <Component id="btnEliminarCita" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnEnviarNotificacion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnCambiarEstadoCita" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="scrPanel" pref="567" max="32767" attributes="0"/>
@@ -190,6 +193,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarNotificacionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCambiarEstadoCita">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/&#xcd;conos/check.png"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Cambiar estado de cita"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCambiarEstadoCitaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

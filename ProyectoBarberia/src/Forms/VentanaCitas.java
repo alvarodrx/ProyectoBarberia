@@ -42,6 +42,7 @@ public class VentanaCitas extends javax.swing.JDialog {
         btnEditarCita = new javax.swing.JButton();
         btnEliminarCita = new javax.swing.JButton();
         btnEnviarNotificacion = new javax.swing.JButton();
+        btnCambiarEstadoCita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -113,6 +114,14 @@ public class VentanaCitas extends javax.swing.JDialog {
             }
         });
 
+        btnCambiarEstadoCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/check.png"))); // NOI18N
+        btnCambiarEstadoCita.setToolTipText("Cambiar estado de cita");
+        btnCambiarEstadoCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarEstadoCitaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +136,8 @@ public class VentanaCitas extends javax.swing.JDialog {
                             .addComponent(btnCrearCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEditarCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEnviarNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                            .addComponent(btnEnviarNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(btnCambiarEstadoCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -148,6 +158,8 @@ public class VentanaCitas extends javax.swing.JDialog {
                         .addComponent(btnEliminarCita)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEnviarNotificacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCambiarEstadoCita)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(scrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE))
                 .addContainerGap())
@@ -160,6 +172,12 @@ public class VentanaCitas extends javax.swing.JDialog {
         // TODO add your handling code here:
         new CrearCita(null, true).setVisible(true);
         refrescarValoresTablaCitas();
+        
+        btnEditarCita.setEnabled(false);
+        btnEliminarCita.setEnabled(false);
+        btnEnviarNotificacion.setEnabled(false);
+        btnCambiarEstadoCita.setEnabled(false);
+        
     }//GEN-LAST:event_btnCrearCitaActionPerformed
 
     private void tablaCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitasMouseClicked
@@ -168,6 +186,7 @@ public class VentanaCitas extends javax.swing.JDialog {
             btnEditarCita.setEnabled(true);
             btnEliminarCita.setEnabled(true);
             btnEnviarNotificacion.setEnabled(true);
+            btnCambiarEstadoCita.setEnabled(true);
             
         }
     }//GEN-LAST:event_tablaCitasMouseClicked
@@ -176,11 +195,28 @@ public class VentanaCitas extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         refrescarValoresTablaCitas();
+        
+        btnEditarCita.setEnabled(false);
+        btnEliminarCita.setEnabled(false);
+        btnEnviarNotificacion.setEnabled(false);
+        btnCambiarEstadoCita.setEnabled(false);
+        
     }//GEN-LAST:event_btnEditarCitaActionPerformed
 
     private void btnEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCitaActionPerformed
         // TODO add your handling code here:
-        refrescarValoresTablaCitas();
+        int opcion = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar esta cita?", "Eliminar cita", 0,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
+
+        if(opcion == 0){
+            btnEditarCita.setEnabled(false);
+            btnEliminarCita.setEnabled(false);
+            btnEnviarNotificacion.setEnabled(false);
+            btnCambiarEstadoCita.setEnabled(false);
+            
+            Barberia.getInstance().obtenerCitas().remove(tablaCitas.getSelectedRow());
+            refrescarValoresTablaCitas();
+        }
+        
     }//GEN-LAST:event_btnEliminarCitaActionPerformed
 
     private void btnEnviarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarNotificacionActionPerformed
@@ -188,7 +224,28 @@ public class VentanaCitas extends javax.swing.JDialog {
         
         Barberia.getInstance().enviarNotificacion(Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()));
         JOptionPane.showMessageDialog(this,"Se ha enviado un correo al cliente de la cita seleccionada.","Notificacion de envío de correo",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
+        
+        btnEditarCita.setEnabled(false);
+        btnEliminarCita.setEnabled(false);
+        btnEnviarNotificacion.setEnabled(false);
+        btnCambiarEstadoCita.setEnabled(false);
     }//GEN-LAST:event_btnEnviarNotificacionActionPerformed
+
+    private void btnCambiarEstadoCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarEstadoCitaActionPerformed
+        // TODO add your handling code here:
+        btnEditarCita.setEnabled(false);
+        btnEliminarCita.setEnabled(false);
+        btnEnviarNotificacion.setEnabled(false);
+        btnCambiarEstadoCita.setEnabled(false);
+        
+        if(Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()).isConfirmado()){
+            Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()).setConfirmado(false);
+        }
+        else{
+            Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()).setConfirmado(true);
+        }
+        refrescarValoresTablaCitas();
+    }//GEN-LAST:event_btnCambiarEstadoCitaActionPerformed
 
     
     private void refrescarValoresTablaCitas(){
@@ -247,6 +304,7 @@ public class VentanaCitas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiarEstadoCita;
     private javax.swing.JButton btnCrearCita;
     private javax.swing.JButton btnEditarCita;
     private javax.swing.JButton btnEliminarCita;
