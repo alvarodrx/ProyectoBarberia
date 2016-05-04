@@ -5,6 +5,10 @@
  */
 package Forms;
 
+import Clases.Barberia;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alvar_000
@@ -17,6 +21,8 @@ public class VentanaCitas extends javax.swing.JDialog {
     public VentanaCitas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        refrescarValoresTablaCitas();
     }
 
     /**
@@ -28,57 +34,122 @@ public class VentanaCitas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        scrPanel = new javax.swing.JScrollPane();
+        tablaCitas = new javax.swing.JTable();
         btnCrearCita = new javax.swing.JButton();
-        btnCrearCita3 = new javax.swing.JButton();
-        btnCrearCita1 = new javax.swing.JButton();
-        btnCrearCita2 = new javax.swing.JButton();
+        btnEditarCita = new javax.swing.JButton();
+        btnEliminarCita = new javax.swing.JButton();
+        btnEnviarNotificacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Citas");
+        jLabel1.setText("Lista de citas");
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        btnCrearCita.setText("Crear cita");
+            },
+            new String [] {
+                "Nombre", "Correo", "Servicio", "Fecha", "Hora", "Confirmada"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaCitasMouseClicked(evt);
+            }
+        });
+        scrPanel.setViewportView(tablaCitas);
+
+        btnCrearCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
+        btnCrearCita.setToolTipText("Agregar nueva cita");
         btnCrearCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearCitaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrearCita);
 
-        btnCrearCita3.setText("Ver citas");
-        jPanel1.add(btnCrearCita3);
+        btnEditarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); // NOI18N
+        btnEditarCita.setToolTipText("Editar cita seleccionada");
+        btnEditarCita.setEnabled(false);
+        btnEditarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarCitaActionPerformed(evt);
+            }
+        });
 
-        btnCrearCita1.setText("Modificar cita");
-        jPanel1.add(btnCrearCita1);
+        btnEliminarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
+        btnEliminarCita.setToolTipText("Eliminar cita seleccionada");
+        btnEliminarCita.setEnabled(false);
+        btnEliminarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCitaActionPerformed(evt);
+            }
+        });
 
-        btnCrearCita2.setText("Eliminar cita");
-        jPanel1.add(btnCrearCita2);
+        btnEnviarNotificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png"))); // NOI18N
+        btnEnviarNotificacion.setToolTipText("Enviar notificación de cita al cliente seleccionado");
+        btnEnviarNotificacion.setEnabled(false);
+        btnEnviarNotificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarNotificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCrearCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditarCita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEnviarNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCrearCita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditarCita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminarCita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEnviarNotificacion)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -88,8 +159,51 @@ public class VentanaCitas extends javax.swing.JDialog {
     private void btnCrearCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCitaActionPerformed
         // TODO add your handling code here:
         new CrearCita(null, true).setVisible(true);
+        refrescarValoresTablaCitas();
     }//GEN-LAST:event_btnCrearCitaActionPerformed
 
+    private void tablaCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitasMouseClicked
+        // TODO add your handling code here
+        if(Barberia.getInstance().obtenerCitas().size() > 0){
+            btnEditarCita.setEnabled(true);
+            btnEliminarCita.setEnabled(true);
+            btnEnviarNotificacion.setEnabled(true);
+            
+        }
+    }//GEN-LAST:event_tablaCitasMouseClicked
+
+    private void btnEditarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCitaActionPerformed
+        // TODO add your handling code here:
+        
+        refrescarValoresTablaCitas();
+    }//GEN-LAST:event_btnEditarCitaActionPerformed
+
+    private void btnEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCitaActionPerformed
+        // TODO add your handling code here:
+        refrescarValoresTablaCitas();
+    }//GEN-LAST:event_btnEliminarCitaActionPerformed
+
+    private void btnEnviarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarNotificacionActionPerformed
+        // TODO add your handling code here:
+        
+        Barberia.getInstance().enviarNotificacion(Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()));
+        JOptionPane.showMessageDialog(this,"Se ha enviado un correo al cliente de la cita seleccionada.","Notificacion de envío de correo",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
+    }//GEN-LAST:event_btnEnviarNotificacionActionPerformed
+
+    
+    private void refrescarValoresTablaCitas(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        //modelo.setRowCount(Barberia.getInstance().obtenerClientes().size());
+        modelo.setColumnCount(6);
+        
+        modelo.setColumnIdentifiers(new Object[]{"Nombre","Correo","Servicio","Fecha","Hora","Confirmada"});
+        
+        Barberia.getInstance().obtenerCitas().stream().forEach((cita) -> {
+            modelo.addRow(new Object[]{cita.getCliente().getNombre(),cita.getCliente().getCorreo(),cita.getServicio(),cita.getFecha().toString(),cita.getHora(),cita.isConfirmado()});
+        });
+        tablaCitas.setModel(modelo);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -134,10 +248,12 @@ public class VentanaCitas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearCita;
-    private javax.swing.JButton btnCrearCita1;
-    private javax.swing.JButton btnCrearCita2;
-    private javax.swing.JButton btnCrearCita3;
+    private javax.swing.JButton btnEditarCita;
+    private javax.swing.JButton btnEliminarCita;
+    private javax.swing.JButton btnEnviarNotificacion;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane scrPanel;
+    private javax.swing.JTable tablaCitas;
     // End of variables declaration//GEN-END:variables
 }

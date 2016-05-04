@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import Clases.Barberia;
 import Clases.Cita;
 import Clases.Cliente;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,7 +63,7 @@ public class CrearCita extends javax.swing.JDialog {
     }
     private boolean disponibilidadCitas(LocalDate dia){
         boolean disponible = false; 
-        Iterator <Cita> citas = barberia.getCitas().iterator();
+        Iterator <Cita> citas = barberia.obtenerCitas().iterator();
         System.out.println("dia: " + dia);
         while(citas.hasNext()){
            System.out.println(""+(citas.next().getFecha()));
