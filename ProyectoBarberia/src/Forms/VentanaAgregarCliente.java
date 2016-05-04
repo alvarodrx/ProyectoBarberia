@@ -19,21 +19,21 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
      * Creates new form VentanaAgregarCliente
      */
     
-    private final boolean agregar;
+    private final int vista;
     Cliente cliente;
     
     
-    public VentanaAgregarCliente(java.awt.Dialog parent, boolean modal, boolean agregar, Cliente cliente) {
+    public VentanaAgregarCliente(java.awt.Dialog parent, boolean modal, int vista, Cliente cliente) {
         super(parent, modal);
         initComponents();
         
         
-        
-        this.agregar = agregar;
+        //Vista = 0 (Agregar) /// Vista = 1 (Editar) /// Vista = 2 (Ver)
+        this.vista = vista;
         this.cliente = cliente;
         
         
-        if(agregar){
+        if(vista ==1){
             lblDescripcion.setText("Agregar nuevo cliente");
             
             btnAccion.setText("Agregar cliente");
@@ -42,13 +42,27 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         }
         
         else{
-            lblDescripcion.setText("Editar cliente existente");
             
-            btnAccion.setText("Editar cliente");
+            if(vista == 2){
+                lblDescripcion.setText("Editar cliente existente");
+                
+                btnAccion.setText("Editar cliente");
+
+                txfNombre.setText(cliente.getNombre());
+                txfTelefono.setText(cliente.getTelefono());
+                txfCorreo.setText(cliente.getCorreo());
+            }
+            else{//vista = 3
+                
+                lblDescripcion.setText("Datos del cliente");
+                
+                btnAccion.setText("Cerrar");
+                
+                txfNombre.setEnabled(false);
+                txfTelefono.setEnabled(false);
+                txfCorreo.setEnabled(false);
+            }
             
-            txfNombre.setText(cliente.getNombre());
-            txfTelefono.setText(cliente.getTelefono());
-            txfCorreo.setText(cliente.getCorreo());
             
         }
         
@@ -189,7 +203,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
     private void btnAccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionActionPerformed
         // TODO add your handling code here:
         
-        if(agregar){
+        if(vista == 1){
             boolean correoEquivalente;
             correoEquivalente = false;
             
@@ -225,22 +239,26 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         
         }
         
-        else{
-            if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
-                if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
-                    cliente.setNombre(txfNombre.getText());
-                    cliente.setTelefono(txfTelefono.getText());
-                    cliente.setCorreo(txfCorreo.getText());
-                    dispose();
-                 
+        else{ //vista != 1
+            if(vista == 2){
+                if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
+                    if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
+                        cliente.setNombre(txfNombre.getText());
+                        cliente.setTelefono(txfTelefono.getText());
+                        cliente.setCorreo(txfCorreo.getText());
+                        dispose();
+
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                    }
+
                 }else{
-                    JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                    JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
                 }
-               
-            }else{
-                JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
             }
-           
+            else{ //vista != 1 && vista != 2
+                dispose();
+            }
         }
     }//GEN-LAST:event_btnAccionActionPerformed
 
@@ -250,7 +268,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
             
         
-            if(agregar){
+            if(vista == 1){
                 boolean correoEquivalente;
                 correoEquivalente = false;
 
@@ -286,13 +304,24 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
             }
 
-            else{
-
-                cliente.setNombre(txfNombre.getText());
-                cliente.setTelefono(txfTelefono.getText());
-                cliente.setCorreo(txfCorreo.getText());
-                dispose();
-
+            else{ // Vista != 1
+                if(vista == 2){
+                    if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
+                        if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
+                            cliente.setNombre(txfNombre.getText());
+                            cliente.setTelefono(txfTelefono.getText());
+                            cliente.setCorreo(txfCorreo.getText());
+                            dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                    }
+                }
+                else{// vista != 2 && vista != 3
+                    dispose();
+                }
             }
         }
     }//GEN-LAST:event_txfCorreoKeyTyped
@@ -301,7 +330,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
-            if(agregar){
+            if(vista == 1){
                 boolean correoEquivalente;
                 correoEquivalente = false;
 
@@ -337,13 +366,25 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
             }
 
-            else{
-
-                cliente.setNombre(txfNombre.getText());
-                cliente.setTelefono(txfTelefono.getText());
-                cliente.setCorreo(txfCorreo.getText());
-                dispose();
-
+            else{ // vista != 1
+                
+                if(vista ==2){ 
+                    if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
+                        if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
+                            cliente.setNombre(txfNombre.getText());
+                            cliente.setTelefono(txfTelefono.getText());
+                            cliente.setCorreo(txfCorreo.getText());
+                            dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                    }
+                }
+                else{// vista != 1 && vista != 2
+                    dispose();
+                }
             }
         }
     }//GEN-LAST:event_txfTelefonoKeyTyped
@@ -354,7 +395,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
             
         
-            if(agregar){
+            if(vista == 1){
                 boolean correoEquivalente;
                 correoEquivalente = false;
 
@@ -390,12 +431,24 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
             }
 
-            else{
-                cliente.setNombre(txfNombre.getText());
-                cliente.setTelefono(txfTelefono.getText());
-                cliente.setCorreo(txfCorreo.getText());
-                dispose();
-
+            else{ // vista != 1
+                if(vista == 2){
+                    if (Barberia.getInstance().comprobarTelefono(txfTelefono.getText())){
+                        if(Barberia.getInstance().comprobarCorreo(txfCorreo.getText())){
+                            cliente.setNombre(txfNombre.getText());
+                            cliente.setTelefono(txfTelefono.getText());
+                            cliente.setCorreo(txfCorreo.getText());
+                            dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                    }
+                }
+                else{ // vista != 1 && vista != 2
+                    dispose();
+                }
             }
         }   
     }//GEN-LAST:event_txfNombreKeyTyped
@@ -431,7 +484,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaAgregarCliente dialog = new VentanaAgregarCliente(new javax.swing.JDialog(), true,true, null);
+                VentanaAgregarCliente dialog = new VentanaAgregarCliente(new javax.swing.JDialog(), true,1, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

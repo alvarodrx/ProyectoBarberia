@@ -179,7 +179,7 @@ public class VentanaCliente extends javax.swing.JDialog {
     
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         // TODO add your handling code here:        
-        new VentanaAgregarCliente(this,true,true,null).setVisible(true);
+        new VentanaAgregarCliente(this,true,1,null).setVisible(true);
         
         actualizarValoresTablaClientes();
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
@@ -191,7 +191,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         btnEliminarCliente.setEnabled(false);
         
         
-        new VentanaAgregarCliente(this,true,false,Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow())).setVisible(true);
+        new VentanaAgregarCliente(this,true,2,Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow())).setVisible(true);
         actualizarValoresTablaClientes();
         
     }//GEN-LAST:event_btnEditarClienteActionPerformed

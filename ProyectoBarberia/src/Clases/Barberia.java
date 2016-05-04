@@ -10,8 +10,6 @@ import javax.mail.MessagingException;
 
 
 import java.util.regex.*;
-import javax.swing.JOptionPane;
-
 
 
 public class Barberia implements java.io.Serializable {
@@ -147,7 +145,10 @@ public class Barberia implements java.io.Serializable {
             return validar("[\\d{0,9}[- ]*]*\\d{0,9}", telefono)|| validar("[\\w(]+[\\d{0,9}][\\w)]+[\\d{0,9}[- ]*]*\\d{0,9}", telefono);
     
         }
-  }
+}
+        
+   
+
 
     private static Cita buscarCita(Cita cita, ArrayList citas) {
         Iterator<Cita> iter = citas.iterator();
