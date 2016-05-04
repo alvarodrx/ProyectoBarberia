@@ -61,6 +61,10 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                 txfNombre.setEnabled(false);
                 txfTelefono.setEnabled(false);
                 txfCorreo.setEnabled(false);
+                
+                txfNombre.setText(cliente.getNombre());
+                txfTelefono.setText(cliente.getTelefono());
+                txfCorreo.setText(cliente.getCorreo());
             }
             
             
