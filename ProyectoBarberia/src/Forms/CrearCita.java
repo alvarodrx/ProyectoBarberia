@@ -30,7 +30,7 @@ public class CrearCita extends javax.swing.JDialog {
     private ArrayList <String> listaClientes;
     private Cliente clienteEscogido;
     private LocalDate fechaEscogida;
-    private int hora;
+    private int horaEscogida;
     private Servicio servicioEscogido;
     
 
@@ -67,17 +67,18 @@ public class CrearCita extends javax.swing.JDialog {
         }
         return disponibilidad;
     }
-    
     //Devuelve la cantidad de horas de atencion en el horario
     private int cantidadCitasEnDia(int dia){
         int cantidad = 0;
         Iterator <Map> horas = barberia.getHorario().values().iterator();
         Map horarioDia = null;
         for(int i = 0; i <= dia;i++){
+            System.out.println(""+i);
             horarioDia = horas.next();
         }
         for(int i=0; i<24;i++){
-            //Ocupo que disponibilidad tenga un true si haya al menos un true en el map
+            System.out.println(""+i+": "+(boolean)horarioDia.get(i));
+            //cantidad va a ser igual a la cantidad de horas de atencion al dia escogido
             if((boolean)horarioDia.get(i))
                 cantidad++;
         }
@@ -96,19 +97,16 @@ public class CrearCita extends javax.swing.JDialog {
         int cantidadCitas=0;
         boolean disponible = true; 
         int diaDeLaSemana = ajusteDeDia(fecha.getDayOfWeek().getValue());
-        Iterator <Cita> citas = barberia.getCitas().iterator();
-        
+        Iterator <Cita> citas = barberia.obtenerCitas().iterator();
         //Busco en todas las existentes a la cita que haga match con la fecha
         while(citas.hasNext()){
-           
            Cita actual = citas.next();
            if (actual.getFecha().equals(fecha)){
                cantidadCitas++;
            }
         }
-        System.out.println("Citas en el dia= "+cantidadCitasEnDia(fecha.getDayOfWeek().getValue()-1));
-        System.out.println("Apartadas:" + cantidadCitas);
-        if(cantidadCitas >= cantidadCitasEnDia(fecha.getDayOfWeek().getValue()-1))
+        
+        if(cantidadCitas != 0 && cantidadCitas >= cantidadCitasEnDia(fecha.getDayOfWeek().getValue()))
            disponible = false;
        
        return disponible;
@@ -116,11 +114,9 @@ public class CrearCita extends javax.swing.JDialog {
     
     private boolean disponibilidadCitas(LocalDate fecha, int hora){
         boolean disponible = true; 
-        Iterator <Cita> citas = barberia.getCitas().iterator();
-        System.out.println("dia: " + fecha);
+        Iterator <Cita> citas = barberia.obtenerCitas().iterator();
         //Busco en todoas las existentes a la cita que haga match con la fecha y hora actual
         while(citas.hasNext()){
-           System.out.println(""+(citas.next().getFecha()));
            Cita actual = citas.next();
            if (actual.getFecha().equals(fecha) && actual.getHora()==hora){
                disponible=false;
@@ -130,7 +126,6 @@ public class CrearCita extends javax.swing.JDialog {
        return disponible;
     }
     private void llenarComboBoxHora(int dia){
-        ArrayList<Integer> lista = new ArrayList();
         Iterator <Map> horas = barberia.getHorario().values().iterator();
         
         Map horarioDia = null;
@@ -142,7 +137,7 @@ public class CrearCita extends javax.swing.JDialog {
         comboBoxHora.setModel(boxCliente);
         for (int i = 0; i<24;i++) {
             if((Boolean)horarioDia.get(i)){
-                boxCliente.addElement(""+i+":00");
+                boxCliente.addElement(""+i);
             }
             
         }
@@ -162,6 +157,7 @@ public class CrearCita extends javax.swing.JDialog {
             }
         
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -433,7 +429,7 @@ public class CrearCita extends javax.swing.JDialog {
                 if(disponibilidadDeHoras(calendario.getCalendar().get(Calendar.DAY_OF_WEEK)-1)==false){
                     JOptionPane.showMessageDialog(null, "No hay horas de atencion en el dia de la semana seleccionado ","Revise el horario o cambie de dia" ,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
                 }
-                if(!disponibilidadDia(fechaConvertida)){
+                else if(!disponibilidadDia(fechaConvertida)){
                     JOptionPane.showMessageDialog(null, "No hay espacio para mas citas ese dia","Revise el horario o cambie de dia" ,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
                 }
                 else{
@@ -441,23 +437,28 @@ public class CrearCita extends javax.swing.JDialog {
                     llenarComboBoxHora(calendario.getCalendar().get(Calendar.DAY_OF_WEEK)-1);
                     jTabbedPane1.setSelectedIndex(2);
                     tabActual = 2;
+                    fechaEscogida = fechaConvertida;
                 }
-                fechaEscogida = fechaConvertida;
+                
                 break;
             case 2:
-                llenarComboBoxServicio();
-                jTabbedPane1.setSelectedIndex(3);
-                
-                tabActual = 3;
-                servicioEscogido = barberia.obtenerServicios().get(comboBoxServicio.getSelectedIndex());
+                horaEscogida = Integer.parseInt(comboBoxHora.getSelectedItem().toString());
+                if(!disponibilidadCitas(fechaEscogida,horaEscogida)){
+                    JOptionPane.showMessageDialog(null, "Error, Esa cita ya se encuentra ocupada","Intente con una hora diferente" ,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
+                }else{
+                    llenarComboBoxServicio();
+                    jTabbedPane1.setSelectedIndex(3);
+                    tabActual = 3;
+                }
                 break;
             case 3:
                 jTabbedPane1.setSelectedIndex(4);
                 tabActual = 4;
+                servicioEscogido = barberia.obtenerServicios().get(comboBoxServicio.getSelectedIndex());
                 break;
             case 4:
-                barberia.crearCita(fechaEscogida, hora, clienteEscogido, servicioEscogido);
-                JOptionPane.showMessageDialog(null, "Se ha creado la cita exitosamente","Revise el horario o cambie de dia" ,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
+                barberia.crearCita(fechaEscogida, horaEscogida, clienteEscogido, servicioEscogido);
+                JOptionPane.showMessageDialog(null, "Se ha creado la cita exitosamente","Se creo la cita" ,0, new javax.swing.ImageIcon());
                 this.dispose();
                 break;
                 

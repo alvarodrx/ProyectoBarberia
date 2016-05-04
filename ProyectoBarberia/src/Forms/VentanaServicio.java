@@ -7,7 +7,6 @@ package Forms;
 
 import javax.swing.DefaultListModel;
 import Clases.Barberia;
-import Clases.Cita;
 import Clases.Servicio;
 import javax.swing.JOptionPane;
 
@@ -252,14 +251,19 @@ public class VentanaServicio extends javax.swing.JDialog {
 
     private void listaServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaServiciosMouseClicked
         // TODO add your handling code here:
-        btnEditarServicio.setEnabled(true);
-        btnEliminarServicio.setEnabled(true);
+        if(Barberia.getInstance().obtenerServicios().size() > 0){
+            btnEditarServicio.setEnabled(true);
+            btnEliminarServicio.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_listaServiciosMouseClicked
 
     private void listaServiciosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaServiciosMousePressed
         // TODO add your handling code here:
-        btnEditarServicio.setEnabled(true);
-        btnEliminarServicio.setEnabled(true);
+        if(Barberia.getInstance().obtenerServicios().size() > 0){
+            btnEditarServicio.setEnabled(true);
+            btnEliminarServicio.setEnabled(true);
+        }
     }//GEN-LAST:event_listaServiciosMousePressed
 
     private boolean tieneCita(Servicio servicio){

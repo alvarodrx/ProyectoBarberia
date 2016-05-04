@@ -127,7 +127,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         });
 
         btnListaEspera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/queue.png"))); // NOI18N
-        btnListaEspera.setToolTipText("Eliminar cliente seleccionado");
+        btnListaEspera.setToolTipText("Ver lista de espera");
         btnListaEspera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaEsperaActionPerformed(evt);
