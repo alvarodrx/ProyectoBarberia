@@ -6,7 +6,7 @@
 package Forms;
 
 import javax.swing.DefaultListModel;
-import proyectobarberia.Barberia;
+import Clases.Barberia;
 import javax.swing.JOptionPane;
 
 
@@ -76,14 +76,14 @@ public class VentanaServicio extends javax.swing.JDialog {
         lblTitulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblTitulo.setText("Lista de Servicios Disponibles");
 
-        btnAgregarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
+        btnAgregarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
         btnAgregarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarServicioActionPerformed(evt);
             }
         });
 
-        btnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png"))); // NOI18N
+        btnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); // NOI18N
         btnEditarServicio.setEnabled(false);
         btnEditarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +91,7 @@ public class VentanaServicio extends javax.swing.JDialog {
             }
         });
 
-        btnEliminarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png"))); // NOI18N
+        btnEliminarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
         btnEliminarServicio.setEnabled(false);
         btnEliminarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +173,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         // TODO add your handling code here:
    
         try{
-            String servicio = (String) JOptionPane.showInputDialog(this,"Ingrese una descripción del nuevo Servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png")),null,null);
+            String servicio = (String) JOptionPane.showInputDialog(this,"Ingrese una descripción del nuevo Servicio", "Agregar servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/Íconos/barbershop.png")),null,null);
 
             if(servicio.equals("")){        
                 JOptionPane.showMessageDialog(null, "El Servicio debe contener una descripción","Mensaje vacío",0);
@@ -185,7 +185,7 @@ public class VentanaServicio extends javax.swing.JDialog {
                 else{
                     //Se puede validar que si el servicio ya está que no lo cree. Pero por ahora: WIII funciona /._./
                     Barberia.getInstance().crearServicio(servicio);
-                    JOptionPane.showMessageDialog(null, "Nuevo servicio creado: " + servicio,"Servicio creado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/iconos/barbershop.png"))); //-------
+                    JOptionPane.showMessageDialog(null, "Nuevo servicio creado: " + servicio,"Servicio creado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/barbershop.png"))); //-------
                     refrescarValoresListaServicios();
                     btnEliminarServicio.setEnabled(false);
                     btnEditarServicio.setEnabled(false);
@@ -203,7 +203,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         //Parent, message, tittle, optiontype, messagetype, icon
-        int opcionBorrar = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este servicio?", "Eliminar servicio", 0,0, new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png")));
+        int opcionBorrar = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este servicio?", "Eliminar servicio", 0,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
         
         if(opcionBorrar == 0){
              Barberia.getInstance().borrarServicio(Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()));
@@ -221,7 +221,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         try{
-            String edicion = (String) JOptionPane.showInputDialog(this,"Ingrese una nueva descripción del Servicio", "Editar Servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")),null,null);
+            String edicion = (String) JOptionPane.showInputDialog(this,"Ingrese una nueva descripción del Servicio", "Editar Servicio", 3, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png")),null,null);
 
             if(edicion.equals("")){
                 JOptionPane.showMessageDialog(null, "La nueva descripción no puede estar vacía","Servicio no modificado",0);
@@ -229,7 +229,7 @@ public class VentanaServicio extends javax.swing.JDialog {
             else{
                 Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()).setDescripcion(edicion);
                 
-                JOptionPane.showMessageDialog(null, "La nueva descripción del servicio es: " + edicion,"Servicio editado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png")));
+                JOptionPane.showMessageDialog(null, "La nueva descripción del servicio es: " + edicion,"Servicio editado exitosamente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png")));
                 
                 refrescarValoresListaServicios();
                 btnEditarServicio.setEnabled(false);

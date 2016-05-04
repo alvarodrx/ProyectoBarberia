@@ -5,12 +5,20 @@
  */
 package Forms;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
+import proyectobarberia.Barberia;
+import proyectobarberia.Cliente;
+
 /**
  *
  * @author alvar_000
  */
 public class CrearCita extends javax.swing.JDialog {
     private int tabActual = 0;
+    private Barberia barberia = Barberia.getInstance();
+    private ArrayList <String> listaClientes;
 
     /**
      * Creates new form CrearCita
@@ -18,6 +26,18 @@ public class CrearCita extends javax.swing.JDialog {
     public CrearCita(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        listaClientes = new ArrayList();
+        Iterator<Cliente> almacenar = barberia.getClientes().iterator();
+        while (almacenar.hasNext()) {
+            Cliente cliente = almacenar.next();
+            listaClientes.add(cliente.getCorreo());
+        }
+        DefaultComboBoxModel boxCliente = new DefaultComboBoxModel();
+        comboBoxCliente.setModel(boxCliente);
+        for (int i = 0; i < listaClientes.size(); i++) {
+            String clienteC = listaClientes.get(i);
+            boxCliente.addElement(clienteC);
+        }
     }
 
     /**
@@ -32,14 +52,14 @@ public class CrearCita extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboBoxCliente = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        comboBoxHora = new javax.swing.JComboBox();
         btnSiguiente = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
 
@@ -50,7 +70,7 @@ public class CrearCita extends javax.swing.JDialog {
         jTabbedPane1.setFocusable(false);
         jTabbedPane1.setRequestFocusEnabled(false);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { }));
 
         jLabel3.setText("Escoge el cliente");
 
@@ -59,14 +79,13 @@ public class CrearCita extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(148, 148, 148)
+                .addComponent(jLabel3)
+                .addContainerGap(148, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(comboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,11 +93,11 @@ public class CrearCita extends javax.swing.JDialog {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(145, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("", jPanel2);
+        jTabbedPane1.addTab("Cliente", jPanel2);
 
         jLabel2.setText("Escoge el dia");
 
@@ -102,25 +121,25 @@ public class CrearCita extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("", jPanel3);
+        jTabbedPane1.addTab("Dia", jPanel3);
 
         jLabel1.setText("Escoje la hora de la cita");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxHora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,11 +147,11 @@ public class CrearCita extends javax.swing.JDialog {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(146, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("", jPanel4);
+        jTabbedPane1.addTab("Hora", jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -186,11 +205,11 @@ public class CrearCita extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtras)
                     .addComponent(btnSiguiente))
-                .addGap(49, 49, 49))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -198,13 +217,27 @@ public class CrearCita extends javax.swing.JDialog {
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
+        switch (tabActual){
+            case 1:
+                jTabbedPane1.setSelectedIndex(0);
+                tabActual = 0;
+                break;
+            case 2:
+                jTabbedPane1.setSelectedIndex(1);
+                tabActual = 1;
+                break;
+        }
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
         switch (tabActual){
-            case 1:
+            case 0:
                 jTabbedPane1.setSelectedIndex(1);
+                tabActual = 1;
+                break;
+            case 1:
+                jTabbedPane1.setSelectedIndex(2);
                 tabActual = 2;
                 break;
         }
@@ -256,9 +289,9 @@ public class CrearCita extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnSiguiente;
+    private javax.swing.JComboBox comboBoxCliente;
+    private javax.swing.JComboBox comboBoxHora;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

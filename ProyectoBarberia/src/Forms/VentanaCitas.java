@@ -29,15 +29,18 @@ public class VentanaCitas extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         btnCrearCita = new javax.swing.JButton();
+        btnCrearCita3 = new javax.swing.JButton();
         btnCrearCita1 = new javax.swing.JButton();
         btnCrearCita2 = new javax.swing.JButton();
-        btnCrearCita3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Citas");
+
+        jPanel1.setLayout(new java.awt.GridLayout());
 
         btnCrearCita.setText("Crear cita");
         btnCrearCita.addActionListener(new java.awt.event.ActionListener() {
@@ -45,44 +48,38 @@ public class VentanaCitas extends javax.swing.JDialog {
                 btnCrearCitaActionPerformed(evt);
             }
         });
-
-        btnCrearCita1.setText("Modificar cita");
-
-        btnCrearCita2.setText("Eliminar cita");
+        jPanel1.add(btnCrearCita);
 
         btnCrearCita3.setText("Ver citas");
+        jPanel1.add(btnCrearCita3);
+
+        btnCrearCita1.setText("Modificar cita");
+        jPanel1.add(btnCrearCita1);
+
+        btnCrearCita2.setText("Eliminar cita");
+        jPanel1.add(btnCrearCita2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCrearCita, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCrearCita1)
-                .addGap(18, 18, 18)
-                .addComponent(btnCrearCita2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCrearCita3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(169, 169, 169)
                 .addComponent(jLabel1)
-                .addGap(187, 187, 187))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearCita1)
-                    .addComponent(btnCrearCita)
-                    .addComponent(btnCrearCita2)
-                    .addComponent(btnCrearCita3))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -141,5 +138,6 @@ public class VentanaCitas extends javax.swing.JDialog {
     private javax.swing.JButton btnCrearCita2;
     private javax.swing.JButton btnCrearCita3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

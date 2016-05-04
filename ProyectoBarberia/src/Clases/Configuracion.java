@@ -1,4 +1,4 @@
-package proyectobarberia;
+package Clases;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

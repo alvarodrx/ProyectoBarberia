@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectobarberia;
+package Clases;
 
 import Forms.VentanaPrincipal;
 import java.io.FileNotFoundException;
@@ -20,19 +20,6 @@ public class ProyectoBarberia {
      */
     public static void main(String[] args){
         // TODO code application logic here
-
-
-
-       
-        
-    
-       
-       
-
-       
-
-        
-
 
         Configuracion c = new Configuracion();
         Barberia barberia;

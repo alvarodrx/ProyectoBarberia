@@ -5,12 +5,16 @@
  */
 package Forms;
 
+import Clases.Cliente;
+import Clases.Barberia;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+
 import javax.swing.JOptionPane;
-import proyectobarberia.*;
+import Clases.*;
+
 
 /**
  *
@@ -24,9 +28,9 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     private ArrayList<String> listaCorreos;
 
     //constructor de ventana lista espera
-    private VentanaListaEspera() {
+  //  private VentanaListaEspera() {
 
-    }
+    //}
 
     /**
      * Creates new form NewJDialog
