@@ -8,8 +8,8 @@ package Forms;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
-import proyectobarberia.Barberia;
-import proyectobarberia.Cliente;
+import Clases.Barberia;
+import Clases.Cliente;
 
 /**
  *

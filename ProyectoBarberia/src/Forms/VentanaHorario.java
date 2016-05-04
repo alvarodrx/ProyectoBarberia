@@ -6,7 +6,7 @@
 package Forms;
 
 import javax.swing.JOptionPane;
-import proyectobarberia.Barberia;
+import Clases.Barberia;
 
 /**
  *

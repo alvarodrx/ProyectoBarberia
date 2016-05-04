@@ -97,18 +97,30 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txfNombre">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: Juan P&#xe9;rez"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfNombreActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfNombreKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txfTelefono">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: ####-####"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfTelefonoActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfTelefonoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txfCorreo">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: correo@ejemplo.com"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfCorreoActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfCorreoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAccion">

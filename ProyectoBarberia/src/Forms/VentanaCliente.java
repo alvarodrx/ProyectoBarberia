@@ -7,7 +7,8 @@ package Forms;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import proyectobarberia.Barberia;
+import Clases.Barberia;
+import Clases.Cliente;
 
 /**
  *
@@ -88,14 +89,14 @@ public class VentanaCliente extends javax.swing.JDialog {
             tablaClientes.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
+        btnAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
         btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarClienteActionPerformed(evt);
             }
         });
 
-        btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png"))); // NOI18N
+        btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); // NOI18N
         btnEditarCliente.setEnabled(false);
         btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +104,7 @@ public class VentanaCliente extends javax.swing.JDialog {
             }
         });
 
-        btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png"))); // NOI18N
+        btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
         btnEliminarCliente.setEnabled(false);
         btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +167,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Teléfono","Correo"});
         
-        Barberia.getInstance().obtenerClientes().stream().forEach((cliente) -> {
+        Barberia.getInstance().getClientes().stream().forEach((cliente) -> {
             modelo.addRow(new Object[]{cliente.getNombre(),cliente.getTelefono(),cliente.getCorreo()});
         });
         
@@ -178,7 +179,7 @@ public class VentanaCliente extends javax.swing.JDialog {
     
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         // TODO add your handling code here:        
-        new VentanaAgregarCliente(this,true,true,null).setVisible(true);
+        new VentanaAgregarCliente(this,true,1,null).setVisible(true);
         
         actualizarValoresTablaClientes();
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
@@ -190,7 +191,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         btnEliminarCliente.setEnabled(false);
         
         
-        new VentanaAgregarCliente(this,true,false,Barberia.getInstance().obtenerClientes().get(tablaClientes.getSelectedRow())).setVisible(true);
+        new VentanaAgregarCliente(this,true,2,Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow())).setVisible(true);
         actualizarValoresTablaClientes();
         
     }//GEN-LAST:event_btnEditarClienteActionPerformed
@@ -201,14 +202,20 @@ public class VentanaCliente extends javax.swing.JDialog {
         btnEditarCliente.setEnabled(false);
         btnEliminarCliente.setEnabled(false);
         
-        int opcion = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este cliente?", "Eliminar cliente", 0,0, new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png")));
-        
+        int opcion = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este cliente?", "Eliminar cliente", 0,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
+
         if(opcion == 0){
-            Barberia.getInstance().obtenerClientes().remove(tablaClientes.getSelectedRow());
+            
+            while (Barberia.getInstance().getListaEspera().contains(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()))){
+                 
+                JOptionPane.showMessageDialog(null, "El cliente " + Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()).getNombre() + " ha sido eliminado de la lista de espera.","Cliente removido de la lista de espera",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); //-------
+                Barberia.getInstance().getListaEspera().remove(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()));
+                
+            }
+            
+            Barberia.getInstance().getClientes().remove(tablaClientes.getSelectedRow());
             actualizarValoresTablaClientes();
         }
-        
-        
         
         
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
