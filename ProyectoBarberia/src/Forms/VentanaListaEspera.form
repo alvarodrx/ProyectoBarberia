@@ -80,7 +80,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="LabelListaEspera">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lista Espera"/>
+        <Property name="text" type="java.lang.String" value="Clientes"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -101,7 +101,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="LabelNombreCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre del Cliente "/>
+        <Property name="text" type="java.lang.String" value="Lista de espera"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="BotonAgregarCliente">

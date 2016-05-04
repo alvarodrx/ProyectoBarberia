@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -10,25 +9,7 @@
             <file>file:/C:/Users/CAMILA/Documents/camila/TEC/TEC%202016/I%20Semestre/P.O.O/Proyectos/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaPrincipal.java</file>
             <file>file:/C:/Users/CAMILA/Documents/camila/TEC/TEC%202016/I%20Semestre/P.O.O/Proyectos/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/ProyectoBarberia.java</file>
             <file>file:/C:/Users/CAMILA/Documents/camila/TEC/TEC%202016/I%20Semestre/P.O.O/Proyectos/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/Servicio.java</file>
+            <file>file:/C:/Users/CAMILA/Documents/camila/TEC/TEC%202016/I%20Semestre/P.O.O/Proyectos/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaServicio.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaServicio.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaPrincipal.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaHorario.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/ProyectoBarberia.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/Mail.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaCitas.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/CrearCita.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/Horario.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/Barberia.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> origin/master
