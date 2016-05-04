@@ -39,7 +39,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BotonCitas = new javax.swing.JButton();
         BotonServicios = new javax.swing.JButton();
         BotonHorario = new javax.swing.JButton();
-        BotonListaEspera = new javax.swing.JButton();
         BotonAgregar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         BotonEditar = new javax.swing.JButton();
@@ -78,13 +77,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BotonHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonHorarioActionPerformed(evt);
-            }
-        });
-
-        BotonListaEspera.setText("Lista Espera");
-        BotonListaEspera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonListaEsperaActionPerformed(evt);
             }
         });
 
@@ -131,9 +123,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BotonServicios)
-                                    .addComponent(BotonHorario)
-                                    .addComponent(BotonListaEspera))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(BotonHorario))
+                                .addGap(0, 222, Short.MAX_VALUE)))))
                 .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
@@ -158,9 +149,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(BotonEditar)
                 .addGap(5, 5, 5)
                 .addComponent(BotonHorario)
-                .addGap(18, 18, 18)
-                .addComponent(BotonListaEspera)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,11 +174,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new VentanaHorario(this,true).setVisible(true);
     }//GEN-LAST:event_BotonHorarioActionPerformed
-
-    private void BotonListaEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonListaEsperaActionPerformed
-        // TODO add your handling code here:
-        new VentanaListaEspera(this, true).setVisible(true);
-    }//GEN-LAST:event_BotonListaEsperaActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
@@ -245,7 +229,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BotonEditar;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonHorario;
-    private javax.swing.JButton BotonListaEspera;
     private javax.swing.JButton BotonServicios;
     private javax.swing.JLabel Lbarberia;
     // End of variables declaration//GEN-END:variables

@@ -219,6 +219,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
             
             if(correoEquivalente){
                 JOptionPane.showMessageDialog(null,"El correo de este cliente ya está registrado","Error al agregar nuevo cliente",0);
+                dispose();
             }
             else{
                 
@@ -231,6 +232,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                     else{
                         //El correo no funciona
                         JOptionPane.showMessageDialog(null,"Debe ingresar un correo electrónico válido","Error de correo electrónico",0);
+                        txfCorreo.requestFocus();
                     }
                 }
                 else{
@@ -251,13 +253,18 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                         cliente.setTelefono(txfTelefono.getText());
                         cliente.setCorreo(txfCorreo.getText());
                         dispose();
+                        JOptionPane.showMessageDialog(null, "El cliente " + cliente.getNombre() + " ha sido editado correctamente.","Edicion de cliente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); //-------
 
                     }else{
                         JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                        txfCorreo.setText(cliente.getCorreo());
+                        txfCorreo.requestFocus();
                     }
 
                 }else{
                     JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                    txfTelefono.setText(cliente.getTelefono());
+                    txfTelefono.requestFocus();
                 }
             }
             else{ //vista != 1 && vista != 2
@@ -284,6 +291,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
                 if(correoEquivalente){
                     JOptionPane.showMessageDialog(null,"El correo de este cliente ya está registrado","Error al agregar nuevo cliente",0);
+                    dispose();
                 }
                 else{
 
@@ -316,11 +324,16 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                             cliente.setTelefono(txfTelefono.getText());
                             cliente.setCorreo(txfCorreo.getText());
                             dispose();
+                            JOptionPane.showMessageDialog(null, "El cliente " + cliente.getNombre() + " ha sido editado correctamente.","Edicion de cliente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); //-------
                         }else{
                             JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                            txfCorreo.setText(cliente.getCorreo());
+                            txfCorreo.requestFocus();
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                        txfTelefono.setText(cliente.getTelefono());
+                        txfTelefono.requestFocus();
                     }
                 }
                 else{// vista != 2 && vista != 3
@@ -346,6 +359,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
                 if(correoEquivalente){
                     JOptionPane.showMessageDialog(null,"El correo de este cliente ya está registrado","Error al agregar nuevo cliente",0);
+                    dispose();
                 }
                 else{
 
@@ -379,11 +393,16 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                             cliente.setTelefono(txfTelefono.getText());
                             cliente.setCorreo(txfCorreo.getText());
                             dispose();
+                            JOptionPane.showMessageDialog(null, "El cliente " + cliente.getNombre() + " ha sido editado correctamente.","Edicion de cliente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); //-------
                         }else{
                             JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                            txfCorreo.setText(cliente.getCorreo());
+                            txfCorreo.requestFocus();
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                        txfTelefono.setText(cliente.getTelefono());
+                        txfTelefono.requestFocus();
                     }
                 }
                 else{// vista != 1 && vista != 2
@@ -411,6 +430,7 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
 
                 if(correoEquivalente){
                     JOptionPane.showMessageDialog(null,"El correo de este cliente ya está registrado","Error al agregar nuevo cliente",0);
+                    dispose();
                 }
                 else{
 
@@ -443,11 +463,16 @@ public class VentanaAgregarCliente extends javax.swing.JDialog {
                             cliente.setTelefono(txfTelefono.getText());
                             cliente.setCorreo(txfCorreo.getText());
                             dispose();
+                            JOptionPane.showMessageDialog(null, "El cliente " + cliente.getNombre() + " ha sido editado correctamente.","Edicion de cliente",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); //-------
                         }else{
                             JOptionPane.showMessageDialog(null, "Correo invalido", "Error de correo", 0);
+                            txfCorreo.setText(cliente.getCorreo());
+                            txfCorreo.requestFocus();
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Teléfono invalido", "Error de teléfono", 0);
+                        txfTelefono.setText(cliente.getTelefono());
+                        txfTelefono.requestFocus();
                     }
                 }
                 else{ // vista != 1 && vista != 2
