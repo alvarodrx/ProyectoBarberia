@@ -8,6 +8,7 @@ package Forms;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Clases.Barberia;
+import Clases.Cita;
 import Clases.Cliente;
 
 /**
@@ -90,6 +91,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         }
 
         btnAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
+        btnAgregarCliente.setToolTipText("Agregar nuevo cliente");
         btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarClienteActionPerformed(evt);
@@ -97,6 +99,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         });
 
         btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); // NOI18N
+        btnEditarCliente.setToolTipText("Editar cliente seleccionado");
         btnEditarCliente.setEnabled(false);
         btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         });
 
         btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
+        btnEliminarCliente.setToolTipText("Eliminar cliente seleccionado");
         btnEliminarCliente.setEnabled(false);
         btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +117,7 @@ public class VentanaCliente extends javax.swing.JDialog {
         });
 
         btnCerrar.setText("Ok");
+        btnCerrar.setToolTipText("Salir");
         btnCerrar.setPreferredSize(new java.awt.Dimension(32, 28));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,16 +132,18 @@ public class VentanaCliente extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnEditarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,6 +188,9 @@ public class VentanaCliente extends javax.swing.JDialog {
         // TODO add your handling code here:        
         new VentanaAgregarCliente(this,true,1,null).setVisible(true);
         
+        btnEditarCliente.setEnabled(false);
+        btnEliminarCliente.setEnabled(false);
+        
         actualizarValoresTablaClientes();
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
@@ -192,29 +202,41 @@ public class VentanaCliente extends javax.swing.JDialog {
         
         
         new VentanaAgregarCliente(this,true,2,Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow())).setVisible(true);
+        
         actualizarValoresTablaClientes();
+        
         
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         // TODO add your handling code here:
         
-        btnEditarCliente.setEnabled(false);
-        btnEliminarCliente.setEnabled(false);
+        
         
         int opcion = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este cliente?", "Eliminar cliente", 0,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
 
         if(opcion == 0){
+            btnEditarCliente.setEnabled(false);
+            btnEliminarCliente.setEnabled(false);
             
-            while (Barberia.getInstance().getListaEspera().contains(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()))){
+            if (Barberia.getInstance().getListaEspera().contains(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()))){
                  
-                JOptionPane.showMessageDialog(null, "El cliente " + Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()).getNombre() + " ha sido eliminado de la lista de espera.","Cliente removido de la lista de espera",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); //-------
-                Barberia.getInstance().getListaEspera().remove(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()));
+                JOptionPane.showMessageDialog(null, "El cliente " + Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()).getNombre() + " se encuentra en la lista de espera.","Error al eliminar cliente",0);//, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); //-------                
+            
+            }
+            else{
+                
+                if(tieneCita(Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()))){
+                    JOptionPane.showMessageDialog(null, "El cliente " + Barberia.getInstance().getClientes().get(tablaClientes.getSelectedRow()).getNombre() + " tiene una cita .","Error al eliminar cliente",0);//, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); //------- 
+                }
+                else{
+                    Barberia.getInstance().getClientes().remove(tablaClientes.getSelectedRow());
+                    actualizarValoresTablaClientes();
+                }
                 
             }
             
-            Barberia.getInstance().getClientes().remove(tablaClientes.getSelectedRow());
-            actualizarValoresTablaClientes();
+            
         }
         
         
@@ -237,6 +259,9 @@ public class VentanaCliente extends javax.swing.JDialog {
         btnEliminarCliente.setEnabled(true);
     }//GEN-LAST:event_tablaClientesMousePressed
 
+    private boolean tieneCita(Cliente cliente){
+        return Barberia.getInstance().obtenerCitas().stream().anyMatch((cita) -> (cita.getCliente() == cliente));
+    }
     
     
     /**

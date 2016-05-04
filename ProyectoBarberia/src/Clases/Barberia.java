@@ -106,6 +106,10 @@ public class Barberia implements java.io.Serializable {
     public ArrayList<Servicio> obtenerServicios() {
         return servicios;
     }
+    
+    public ArrayList<Cita> obtenerCitas(){
+        return citas;
+    }
 
     public void agregarClienteListaEspera(Cliente cliente) {
         listaEspera.add(cliente);
@@ -115,8 +119,6 @@ public class Barberia implements java.io.Serializable {
     public void borrarClienteListaEspera(int indice) {
         listaEspera.remove(indice);
         
-        
-
     }
 
     public void establecerHorarioAtencion(Map<Integer, Map> horario) {
