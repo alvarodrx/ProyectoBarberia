@@ -76,10 +76,10 @@
                 <Column editable="true" title="Domingo" type="java.lang.Boolean"/>
                 <Column editable="true" title="Lunes" type="java.lang.Boolean"/>
                 <Column editable="true" title="Martes" type="java.lang.Boolean">
-                  <Data value="true"/>
+                  <Data value="false"/>
                   <Data value="null"/>
                   <Data value="null"/>
-                  <Data value="true"/>
+                  <Data value="false"/>
                   <Data value="null"/>
                   <Data value="null"/>
                   <Data value="null"/>

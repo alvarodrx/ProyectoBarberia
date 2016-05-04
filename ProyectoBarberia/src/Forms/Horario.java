@@ -97,10 +97,10 @@ public class Horario extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null,  new Boolean(true), null, null, null, null},
+                {null, null,  new Boolean(false), null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
-                {null, null,  new Boolean(true), null, null, null, null},
+                {null, null,  new Boolean(false), null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},

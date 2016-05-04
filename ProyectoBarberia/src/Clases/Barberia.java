@@ -95,6 +95,11 @@ public class Barberia implements java.io.Serializable {
         c.setConfirmado(true);
     }
 
+    public ArrayList<Cita> getCitas() {
+        return citas;
+    }
+    
+
     public void crearServicio(String descripcion) {
         servicios.add(new Servicio(descripcion));
     }
@@ -119,9 +124,6 @@ public class Barberia implements java.io.Serializable {
 
     }
 
-    public void establecerHorarioAtencion(Map<Integer, Map> horario) {
-
-    }
 
     
     //Valida el ingreso de datos 

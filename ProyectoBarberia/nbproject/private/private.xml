@@ -1,34 +1,16 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaAgregarCliente.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaServicio.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaPrincipal.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/ProyectoBarberia.java</file>
+            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaCliente.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaCitas.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaListaEspera.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/CrearCita.java</file>
             <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/Forms/Horario.java</file>
-            <file>file:/C:/Users/alvar_000/OneDrive/Documentos/TEC/I%20Sem%202016/POO/Proyectos%20NetBeans/ProyectoBarberia/ProyectoBarberia/src/proyectobarberia/Barberia.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaCliente.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaListaEspera.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Forms/CrearCita.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Clases/Barberia.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Clases/Cliente.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaServicio.java</file>
-            <file>file:/Users/macretinai7/Documents/Tareas/POO/Proyecto%201/ProyectoBarberia/ProyectoBarberia/src/Forms/VentanaAgregarCliente.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> 18b468bd26158ec14219226671c7c8939d7f4860
