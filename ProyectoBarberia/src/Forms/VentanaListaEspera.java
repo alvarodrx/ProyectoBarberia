@@ -34,7 +34,7 @@ public class VentanaListaEspera extends javax.swing.JDialog {
     /**
      * Creates new form NewJDialog
      */
-    public VentanaListaEspera(java.awt.Frame parent, boolean modal) {
+    public VentanaListaEspera(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -106,7 +106,8 @@ public class VentanaListaEspera extends javax.swing.JDialog {
 
         LabelNombreCliente.setText("Lista de espera");
 
-        BotonAgregarCliente.setText("+");
+        BotonAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
+        BotonAgregarCliente.setToolTipText("Agregar cliente a lista de espera");
         BotonAgregarCliente.setEnabled(false);
         BotonAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +115,8 @@ public class VentanaListaEspera extends javax.swing.JDialog {
             }
         });
 
-        BotonEliminarCliente.setText("-");
+        BotonEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
+        BotonEliminarCliente.setToolTipText("Eliminar cliente seleccionado");
         BotonEliminarCliente.setEnabled(false);
         BotonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +124,8 @@ public class VentanaListaEspera extends javax.swing.JDialog {
             }
         });
 
-        BotonVerCliente.setText("verCliente");
+        BotonVerCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/eye.png"))); // NOI18N
+        BotonVerCliente.setToolTipText("Ver cliente seleccionado");
         BotonVerCliente.setEnabled(false);
         BotonVerCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +174,7 @@ public class VentanaListaEspera extends javax.swing.JDialog {
                     .addComponent(rdbOcultarLista)
                     .addComponent(rdbVerLista)
                     .addComponent(rdbEditarLista))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,19 +203,20 @@ public class VentanaListaEspera extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BotonEliminarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BotonAgregarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BotonVerCliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ComboBoxListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(3, 3, 3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BotonVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(BotonEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                        .addComponent(BotonAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
+                                .addGap(36, 36, 36))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,10 +234,10 @@ public class VentanaListaEspera extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BotonEliminarCliente)
                         .addGap(18, 18, 18)
-                        .addComponent(BotonVerCliente)
-                        .addGap(53, 53, 53)
+                        .addComponent(BotonVerCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(87, 87, 87)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(58, Short.MAX_VALUE))
+                        .addGap(61, 61, 61))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))))
@@ -370,7 +374,7 @@ public class VentanaListaEspera extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaListaEspera dialog = new VentanaListaEspera(new javax.swing.JFrame(), true);
+                VentanaListaEspera dialog = new VentanaListaEspera(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
