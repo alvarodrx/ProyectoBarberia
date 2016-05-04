@@ -7,6 +7,8 @@ package Forms;
 
 import javax.swing.DefaultListModel;
 import Clases.Barberia;
+import Clases.Cita;
+import Clases.Servicio;
 import javax.swing.JOptionPane;
 
 
@@ -77,6 +79,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         lblTitulo.setText("Lista de Servicios Disponibles");
 
         btnAgregarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/add.png"))); // NOI18N
+        btnAgregarServicio.setToolTipText("Agregar un nuevo servicio");
         btnAgregarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarServicioActionPerformed(evt);
@@ -84,6 +87,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         });
 
         btnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/edit.png"))); // NOI18N
+        btnEditarServicio.setToolTipText("Editar servicio seleccionado");
         btnEditarServicio.setEnabled(false);
         btnEditarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +96,7 @@ public class VentanaServicio extends javax.swing.JDialog {
         });
 
         btnEliminarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png"))); // NOI18N
+        btnEliminarServicio.setToolTipText("Eliminar servicio seleccionado");
         btnEliminarServicio.setEnabled(false);
         btnEliminarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,40 +111,37 @@ public class VentanaServicio extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCerrar))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jscrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jscrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEliminarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 16, Short.MAX_VALUE)))
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregarServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminarServicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jscrPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jscrPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCerrar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addComponent(btnAgregarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnEliminarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCerrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -206,14 +208,19 @@ public class VentanaServicio extends javax.swing.JDialog {
         int opcionBorrar = (int) JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar este servicio?", "Eliminar servicio", 0,0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/delete.png")));
         
         if(opcionBorrar == 0){
-             Barberia.getInstance().borrarServicio(Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()));
-        
-            refrescarValoresListaServicios();
             
-            if(Barberia.getInstance().obtenerServicios().isEmpty()){
-                btnEliminarServicio.setEnabled(false);
-                btnEditarServicio.setEnabled(false);
+            btnEliminarServicio.setEnabled(false);
+            btnEditarServicio.setEnabled(false);
+            
+            if(tieneCita(Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()))){
+                JOptionPane.showMessageDialog(this, "El servicio está incluido en una cita.","Error al eliminar servicio",0);
             }
+            else{
+                Barberia.getInstance().borrarServicio(Barberia.getInstance().obtenerServicios().get(listaServicios.getSelectedIndex()));
+                refrescarValoresListaServicios();
+            }
+             
+            
         }
     }//GEN-LAST:event_btnEliminarServicioActionPerformed
 
@@ -255,6 +262,10 @@ public class VentanaServicio extends javax.swing.JDialog {
         btnEliminarServicio.setEnabled(true);
     }//GEN-LAST:event_listaServiciosMousePressed
 
+    private boolean tieneCita(Servicio servicio){
+        
+        return Barberia.getInstance().obtenerCitas().stream().anyMatch((cita) -> (cita.getServicio() == servicio));
+    }
     /**
      * @param args the command line arguments
      */
