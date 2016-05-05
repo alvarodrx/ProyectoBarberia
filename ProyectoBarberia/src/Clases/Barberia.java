@@ -25,8 +25,9 @@ public class Barberia implements java.io.Serializable {
     private ArrayList<Servicio> servicios;
     public Configuracion configuracion;
     private static Barberia instance;
-    private String correoBarberia;
-    private String passCorreo;
+    private String correoBarberia= "barbershop.thebarber@gmail.com";
+    private String passCorreo = "barber123";
+    
 
 
     private Barberia() {

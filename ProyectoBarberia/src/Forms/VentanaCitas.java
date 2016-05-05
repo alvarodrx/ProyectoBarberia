@@ -6,6 +6,8 @@
 package Forms;
 
 import Clases.Barberia;
+import Clases.Cita;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author alvar_000
  */
 public class VentanaCitas extends javax.swing.JDialog {
-
+    Barberia barberia = Barberia.getInstance();
     /**
      * Creates new form VentanaCitas
      */
@@ -224,10 +226,17 @@ public class VentanaCitas extends javax.swing.JDialog {
 
     private void btnEnviarNotificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarNotificacionActionPerformed
         // TODO add your handling code here:
-        
-        Barberia.getInstance().enviarNotificacion(Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()));
-        JOptionPane.showMessageDialog(this,"Se ha enviado un correo al cliente de la cita seleccionada.","Notificacion de envío de correo",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
-        
+        Iterator<Cita> citas = barberia.obtenerCitas().iterator();
+        System.out.println(""+citas);
+        while(citas.hasNext()){
+            Cita actual = citas.next();
+            if(actual.isConfirmado()==false){
+                System.out.println(""+actual);
+                barberia.enviarNotificacion(actual);
+                
+            }
+        }
+        JOptionPane.showMessageDialog(this,"Se ha enviado un correo a cada cliente con citas sin confirmar.","Notificacion de envío de correo",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
         btnEditarCita.setEnabled(false);
         btnEliminarCita.setEnabled(false);
         btnEnviarNotificacion.setEnabled(false);
