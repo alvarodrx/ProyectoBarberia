@@ -193,7 +193,10 @@ public class VentanaCitas extends javax.swing.JDialog {
 
     private void btnEditarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCitaActionPerformed
         // TODO add your handling code here:
-        
+        if(tablaCitas.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(this,"Debes seleccionar una cita primero.","Seleccione una cita primero",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
+        }
+        new CrearCita(null, true,Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow())).setVisible(true);
         refrescarValoresTablaCitas();
         
         btnEditarCita.setEnabled(false);

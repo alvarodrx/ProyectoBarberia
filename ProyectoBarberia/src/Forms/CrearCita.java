@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
  * @author alvar_000
  */
 public class CrearCita extends javax.swing.JDialog {
+    private boolean modoCreacion; //Si modo es true se esta en modo creacion, de lo contrario se desea modificar una cita
     private int tabActual = 0;
     private Barberia barberia = Barberia.getInstance();
     private ArrayList <String> listaClientes;
@@ -32,13 +33,16 @@ public class CrearCita extends javax.swing.JDialog {
     private LocalDate fechaEscogida;
     private int horaEscogida;
     private Servicio servicioEscogido;
+    private Cita citaLocal;
     
 
     /**
      * Creates new form CrearCita
+     * Este constructo se utiliza para crear una cita desde cero
      */
     public CrearCita(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        modoCreacion =  true;
         initComponents();
         listaClientes = new ArrayList();
         Iterator<Cliente> almacenar = barberia.getClientes().iterator();
@@ -51,6 +55,23 @@ public class CrearCita extends javax.swing.JDialog {
         for (String clienteC : listaClientes) {
             boxCliente.addElement(clienteC);
         }
+    }
+    
+    /**
+     * Creates new form CrearCita
+     * Este constructo se utiliza para modificar una cita existente
+     */
+    public CrearCita(java.awt.Frame parent, boolean modal, Cita citaAModificar) {
+        super(parent, modal);
+        modoCreacion = false;
+        initComponents();
+        citaLocal=citaAModificar;
+        barberia.obtenerCitas().remove(citaAModificar);
+        DefaultComboBoxModel boxCliente = new DefaultComboBoxModel();
+        comboBoxCliente.setModel(boxCliente);
+        boxCliente.addElement(citaLocal.getCliente().getCorreo());
+        jTabbedPane1.setSelectedIndex(1);
+        
     }
     
     private boolean disponibilidadDeHoras(int diaDeSemana){
@@ -396,8 +417,11 @@ public class CrearCita extends javax.swing.JDialog {
         // TODO add your handling code here:
         switch (tabActual){
             case 1:
-                jTabbedPane1.setSelectedIndex(0);
-                tabActual = 0;
+                if(modoCreacion){
+                    jTabbedPane1.setSelectedIndex(0);
+                    tabActual = 0;
+                }
+                
                 break;
             case 2:
                 jTabbedPane1.setSelectedIndex(1);
@@ -421,6 +445,9 @@ public class CrearCita extends javax.swing.JDialog {
                 clienteEscogido = barberia.buscarCliente((String)comboBoxCliente.getSelectedItem());
                 jTabbedPane1.setSelectedIndex(1);
                 tabActual = 1;
+                if(!modoCreacion){
+                    calendario.setDate(Date.from(citaLocal.getFecha().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+                }
                 break;
             case 1:
                 LocalDate fechaConvertida = calendario.getCalendar().getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -458,7 +485,10 @@ public class CrearCita extends javax.swing.JDialog {
                 break;
             case 4:
                 barberia.crearCita(fechaEscogida, horaEscogida, clienteEscogido, servicioEscogido);
-                JOptionPane.showMessageDialog(null, "Se ha creado la cita exitosamente","Se creo la cita" ,0, new javax.swing.ImageIcon());
+                if(modoCreacion){
+                    JOptionPane.showMessageDialog(null, "Se ha creado la cita exitosamente","Se creo la cita" ,0, new javax.swing.ImageIcon());
+                }else
+                    JOptionPane.showMessageDialog(null, "Se ha modificado la cita exitosamente","Se creo la cita" ,0, new javax.swing.ImageIcon());
                 this.dispose();
                 break;
                 
