@@ -6,8 +6,6 @@
 package Clases;
 
 import Forms.VentanaPrincipal;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 /**
  *
@@ -27,14 +25,14 @@ public class ProyectoBarberia {
         if(barberia == null){
             barberia = Barberia.getInstance();
             System.out.println("No hay archivo");
-            barberia.crearCliente("Ana", "Ana.98", "correo7890098765");
+           // barberia.crearCliente("Ana", "Ana.98", "correo7890098765");
         }else{
             barberia.setInstance(barberia);
             System.out.println("Se cargó el archivo");
 
         }
         new VentanaPrincipal().setVisible(true);
-        System.out.println(barberia.comprobarTelefono("(506)789-098"));
+        //System.out.println(barberia.comprobarTelefono("(506)789-098"));
 
 
         

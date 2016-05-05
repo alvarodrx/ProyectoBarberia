@@ -218,7 +218,7 @@ public class CrearCita extends javax.swing.JDialog {
 
         comboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { }));
 
-        jLabel3.setText("Escoge el cliente");
+        jLabel3.setText("Escoja el cliente");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -252,11 +252,11 @@ public class CrearCita extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
                     .addComponent(calendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,6 +485,7 @@ public class CrearCita extends javax.swing.JDialog {
                 break;
             case 4:
                 barberia.crearCita(fechaEscogida, horaEscogida, clienteEscogido, servicioEscogido);
+                
                 if(modoCreacion){
                     JOptionPane.showMessageDialog(null, "Se ha creado la cita exitosamente","Se creo la cita" ,0, new javax.swing.ImageIcon());
                 }else

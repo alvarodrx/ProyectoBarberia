@@ -8,6 +8,7 @@ package Forms;
 import Clases.Barberia;
 import Clases.Cita;
 import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,12 +20,15 @@ public class VentanaCitas extends javax.swing.JDialog {
     Barberia barberia = Barberia.getInstance();
     /**
      * Creates new form VentanaCitas
+     * @param parent
+     * @param modal
      */
     public VentanaCitas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
         refrescarValoresTablaCitas();
+        tablaCitas.setDefaultEditor(Object.class,null);
     }
 
     /**
@@ -118,6 +122,7 @@ public class VentanaCitas extends javax.swing.JDialog {
 
         btnCambiarEstadoCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/check.png"))); // NOI18N
         btnCambiarEstadoCita.setToolTipText("Cambiar estado de cita");
+        btnCambiarEstadoCita.setEnabled(false);
         btnCambiarEstadoCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCambiarEstadoCitaActionPerformed(evt);
@@ -172,8 +177,28 @@ public class VentanaCitas extends javax.swing.JDialog {
 
     private void btnCrearCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCitaActionPerformed
         // TODO add your handling code here:
-        new CrearCita(null, true).setVisible(true);
-        refrescarValoresTablaCitas();
+        if(Barberia.getInstance().getClientes().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay clientes registrados para asignarles una cita","Error de cita",0);
+        }
+        else{
+            if(Barberia.getInstance().obtenerServicios().isEmpty()){
+                JOptionPane.showMessageDialog(null, "No hay servicios registrados para asignar citas","Error de cita",0);
+            }
+            else{
+                
+                if(Barberia.getInstance().getHorario() == null){
+                    JOptionPane.showMessageDialog(null, "No hay horario de atención definido para  asignar citas","Error de cita",0);
+                }
+                else{
+                    new CrearCita(null, true).setVisible(true);
+                    refrescarValoresTablaCitas();
+
+                }
+                                
+            }
+            
+        }
+        
         
         btnEditarCita.setEnabled(false);
         btnEliminarCita.setEnabled(false);
@@ -198,7 +223,10 @@ public class VentanaCitas extends javax.swing.JDialog {
         if(tablaCitas.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(this,"Debes seleccionar una cita primero.","Seleccione una cita primero",0, new javax.swing.ImageIcon(getClass().getResource("/Íconos/mail.png")));
         }
-        new CrearCita(null, true,Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow())).setVisible(true);
+        CrearCita ventana;
+        ventana = new CrearCita(null, true,Barberia.getInstance().obtenerCitas().get(tablaCitas.getSelectedRow()));
+        ventana.setVisible(true);
+        ventana.setTitle("Modificar cita");
         refrescarValoresTablaCitas();
         
         btnEditarCita.setEnabled(false);
@@ -267,8 +295,9 @@ public class VentanaCitas extends javax.swing.JDialog {
         
         modelo.setColumnIdentifiers(new Object[]{"Nombre","Correo","Servicio","Fecha","Hora","Confirmada"});
         
+        
         Barberia.getInstance().obtenerCitas().stream().forEach((cita) -> {
-            modelo.addRow(new Object[]{cita.getCliente().getNombre(),cita.getCliente().getCorreo(),cita.getServicio(),cita.getFecha().toString(),cita.getHora(),cita.isConfirmado()});
+            modelo.addRow(new Object[]{cita.getCliente().getNombre(),cita.getCliente().getCorreo(),cita.getServicio().getDescripcion(),cita.getFecha().toString(),cita.getHora(),cita.isConfirmado()});
         });
         tablaCitas.setModel(modelo);
     }
@@ -276,6 +305,7 @@ public class VentanaCitas extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -301,17 +331,15 @@ public class VentanaCitas extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VentanaCitas dialog = new VentanaCitas(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            VentanaCitas dialog = new VentanaCitas(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 

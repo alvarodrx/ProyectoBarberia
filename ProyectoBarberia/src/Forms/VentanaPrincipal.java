@@ -33,15 +33,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         Lbarberia = new javax.swing.JLabel();
         BotonCliente = new javax.swing.JButton();
         BotonCitas = new javax.swing.JButton();
         BotonServicios = new javax.swing.JButton();
         BotonHorario = new javax.swing.JButton();
-        BotonAgregar = new javax.swing.JButton();
-        BotonEliminar = new javax.swing.JButton();
-        BotonEditar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -49,8 +48,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        Lbarberia.setText("Barberia");
+        Lbarberia.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        Lbarberia.setText("Barbería");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(253, 37, 0, 0);
+        getContentPane().add(Lbarberia, gridBagConstraints);
 
         BotonCliente.setText("Cliente");
         BotonCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +65,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 BotonClienteActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 21;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 3);
+        getContentPane().add(BotonCliente, gridBagConstraints);
 
         BotonCitas.setText("Citas");
         BotonCitas.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +81,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 BotonCitasActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 48;
+        gridBagConstraints.ipady = 27;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 3);
+        getContentPane().add(BotonCitas, gridBagConstraints);
 
         BotonServicios.setText("Servicios");
         BotonServicios.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +97,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 BotonServiciosActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = 28;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 3);
+        getContentPane().add(BotonServicios, gridBagConstraints);
 
         BotonHorario.setText("Horario");
         BotonHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -79,78 +113,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 BotonHorarioActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 33;
+        gridBagConstraints.ipady = 31;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 3);
+        getContentPane().add(BotonHorario, gridBagConstraints);
 
-        BotonAgregar.setText("+");
-
-        BotonEliminar.setText("-");
-        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarActionPerformed(evt);
-            }
-        });
-
-        BotonEditar.setText("*");
-        BotonEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEditarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BotonEditar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(Lbarberia)
-                        .addGap(0, 109, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BotonCitas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonEliminar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BotonCliente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BotonAgregar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BotonServicios)
-                                    .addComponent(BotonHorario))
-                                .addGap(0, 222, Short.MAX_VALUE)))))
-                .addGap(70, 70, 70))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Lbarberia)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(BotonCliente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(BotonAgregar)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonCitas)
-                    .addComponent(BotonEliminar))
-                .addGap(18, 18, 18)
-                .addComponent(BotonServicios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotonEditar)
-                .addGap(5, 5, 5)
-                .addComponent(BotonHorario)
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Íconos/barber.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.ipadx = -341;
+        gridBagConstraints.ipady = -42;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 0);
+        getContentPane().add(jLabel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,14 +156,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new VentanaHorario(this,true).setVisible(true);
     }//GEN-LAST:event_BotonHorarioActionPerformed
-
-    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonEliminarActionPerformed
-
-    private void BotonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonEditarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         barberia.configuracion.guardarDatos();
@@ -223,13 +197,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAgregar;
     private javax.swing.JButton BotonCitas;
     private javax.swing.JButton BotonCliente;
-    private javax.swing.JButton BotonEditar;
-    private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonHorario;
     private javax.swing.JButton BotonServicios;
     private javax.swing.JLabel Lbarberia;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

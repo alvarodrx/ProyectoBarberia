@@ -8,7 +8,6 @@ package Forms;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Clases.Barberia;
-import Clases.Cita;
 import Clases.Cliente;
 
 /**

@@ -25,9 +25,9 @@ public class Barberia implements java.io.Serializable {
     private ArrayList<Servicio> servicios;
     public Configuracion configuracion;
     private static Barberia instance;
-    private String correoBarberia= "barbershop.thebarber@gmail.com";
-    private String passCorreo = "barber123";
-    
+
+    private final String correoBarberia;
+    private final String passCorreo;
 
 
     private Barberia() {
@@ -36,7 +36,14 @@ public class Barberia implements java.io.Serializable {
         servicios = new ArrayList();
         citas = new ArrayList();
         configuracion = new Configuracion();
+        
+        correoBarberia = "barbershop.thebarber@gmail.com";
+        passCorreo = "barber123";
+        
+        
             //new VentanaPrincipal().setVisible(true);
+            
+           
 
     }
 
@@ -82,7 +89,7 @@ public class Barberia implements java.io.Serializable {
         String destinatario = cita.getCliente().getCorreo();
         String asunto = "Barberia: Confirmar cita";
         String mensaje = "Le recuerdamos que usted tiene una cita el dia " + cita.getFecha()
-                + " a las " + cita.getHora() + ":00 horas." + "\nPara confirmar su asistencia por favor responda este correo.";
+                + " a las " + cita.getHora() + ":00 horas. \nEl servicio que solicitó es de: " +cita.getServicio().getDescripcion()+ "\nPara confirmar su asistencia por favor responda este correo.";
         Mail m = new Mail(correoBarberia);
         try {
             m.enviarCorreo(correoBarberia, passCorreo, destinatario, asunto, mensaje);

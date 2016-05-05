@@ -136,7 +136,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Escoge el cliente"/>
+                    <Property name="text" type="java.lang.String" value="Escoja el cliente"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -154,12 +154,12 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="68" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="calendario" alignment="2" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="141" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
